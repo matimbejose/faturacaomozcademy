@@ -3,6 +3,7 @@ Bem-vindo ao repositório oficial do simplex, uma aplicação criada no âmbito 
 
 ## Alunos
 - Matimbe, José Justino (moderador)
+- Elihud, Clementina U.
 
 
 
