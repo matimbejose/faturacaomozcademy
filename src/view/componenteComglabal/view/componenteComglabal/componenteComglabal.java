@@ -1,22 +1,23 @@
+package view.componenteComglabal;
+
 import java.awt.*;
 import javax.swing.*;
 
-public class ComponetGlobal extends JFrame {
+
+
+public class componenteComglabal extends JPanel {
+  
 private JButton paginaInicial,estudantes,disciplinas,formacao,financas;
-private GridBagConstraints   pgIn, pgEst, pgDis,pgFor, pgFin;
 private JLabel labelLogo;
 private ImageIcon logo;
 private Color corFundo;
 
 
-public ComponetGlobal() {
+public componenteComglabal(JPanel content) {
     setLayout(new BorderLayout());
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     add(BorderLayout.NORTH, Logo());
-    // add(BorderLayout.CENTER , conteuddo());
+    add(BorderLayout.CENTER , conteuddo(content));
     add(BorderLayout.WEST, Menu());
-    pack();
-    setVisible(true);
   }
 
   public void inicializarComponents() {
@@ -27,22 +28,17 @@ public ComponetGlobal() {
     financas = new JButton();
     logo = new ImageIcon();
     labelLogo = new JLabel();
-    pgIn = new GridBagConstraints();
-    pgEst = new GridBagConstraints();
-    pgDis = new GridBagConstraints();
-    pgFor = new GridBagConstraints();
-    pgFin = new GridBagConstraints();
     corFundo = new Color(30, 30, 30);
   }
  
   public JPanel Logo() {
     inicializarComponents();
     logo = new ImageIcon("Img/logo.png");
-    JPanel aux = new JPanel(new FlowLayout(FlowLayout.LEADING));
+    JPanel aux = new JPanel(new FlowLayout(FlowLayout.LEFT));
     aux.add(labelLogo = new JLabel(logo));
     aux.setPreferredSize(new Dimension(1500, 130));
     aux.setBackground(corFundo);
-   return aux;
+    return aux;
   }
 
 
@@ -53,7 +49,7 @@ public ComponetGlobal() {
     aux.add(Box.createRigidArea(new Dimension(10,10)));
     aux.add(paginaInicial = new JButton("Pagina Inicial"));
     aux.add(Box.createRigidArea(new Dimension(10,10)));
-    aux.add(estudantes = new JButton("Estudantes    "));
+    aux.add(estudantes = new JButton("Estudantes    "), new ImageIcon("Img/money.png"));
     aux.add(Box.createRigidArea(new Dimension(10,10)));
     aux.add(disciplinas = new JButton("Disciplinas     "));
     aux.add(Box.createRigidArea(new Dimension(10,10)));
@@ -67,13 +63,10 @@ public ComponetGlobal() {
   }
 
 
-  public JPanel conteuddo() {
-    JPanel aux = new JPanel();
+  public JPanel conteuddo(JPanel content) {
+    JPanel aux = new JPanel(new BorderLayout());
+    aux.add(BorderLayout.CENTER, content);
     return aux;
-  }
-
-  public static void main(String[] args) {
-    new ComponetGlobal();
   }
 
 
