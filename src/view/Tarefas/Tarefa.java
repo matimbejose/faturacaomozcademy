@@ -1,16 +1,12 @@
 package view.Tarefas;
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-
-
 public class Tarefa extends JFrame {
-  
 private JButton paginaInicial,estudantes,disciplinas,formacao,financas;
 private JLabel labelLogo;
-private JButton botaoComTi;
+private JButton botaoComTi,botaoCadastrar;
 private ImageIcon logo;
 private Color corFundo;
 private GridBagConstraints  g1,g2, g3, g4, g5;
@@ -34,7 +30,7 @@ public Tarefa() {
     disciplinas =  new JButton("Disciplinas     ");
     formacao =  new JButton("   Formacao    ");
     financas =   new JButton("  Finanacas    ");
-    botaoComTi = new JButton();
+    botaoComTi = new JButton("Formulario Para Cadastro de Tarefas      ");
     logo = new ImageIcon();
     labelLogo = new JLabel();
     corFundo = new Color(30, 30, 30);
@@ -43,6 +39,7 @@ public Tarefa() {
     g3 = new GridBagConstraints();
     g4 = new GridBagConstraints();
     g5 = new GridBagConstraints();
+    botaoCadastrar = new JButton("cadastra");
   }
  
   public JPanel Logo() {
@@ -52,7 +49,6 @@ public Tarefa() {
     aux.add(labelLogo = new JLabel(logo));
     aux.setPreferredSize(new Dimension(1500, 130));
     aux.setBackground(corFundo);
-
     return aux;
   }
 
@@ -67,11 +63,11 @@ public Tarefa() {
     aux.add(estudantes);
     aux.add(Box.createRigidArea(new Dimension(10,10)));
     aux.add(disciplinas);
-    aux.add(Box.createRigidArea(new Dimension(10,10)));
+    aux.add(Box.createRigidArea(new Dimension(10,10))) ;
     aux.add(formacao);
     aux.add(Box.createRigidArea(new Dimension(10,10)));
     aux.add(financas);
-    aux.setPreferredSize(new Dimension(130,750));
+    aux.setPreferredSize(new Dimension(150,600));
     aux.setBackground(corFundo);
     return aux;
   }
@@ -80,26 +76,36 @@ public Tarefa() {
   private JPanel conteuddo() {
     inicializarComponents();
 
-    JPanel auxiliar = new JPanel(new FlowLayout(FlowLayout.LEADING));
-    JPanel aux = new JPanel(new GridBagLayout());
-    aux.setBorder(new EmptyBorder(50, 5, 5, 5));
-    botaoComTi = new JButton("Formulario Para Cadastro de Tarefas      ");
+    JPanel flow = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+
+    JPanel conteudoPrincipal = new JPanel(new GridBagLayout());
+    conteudoPrincipal.setBorder(new EmptyBorder(30,3, 4, 5));
+
+    g1.gridx = 0;
+    g1.ipadx = 700;
+
+
+    g2.gridx = 0;
+    g2.anchor = GridBagConstraints.WEST;
+
+    g3.gridx = 0;
+    g3.anchor = GridBagConstraints.WEST;
+
+    g4.gridx = 0;
+    g4.anchor = GridBagConstraints.WEST;
+
     botaoComTi.setEnabled(false);
+    botaoComTi.setHorizontalAlignment(SwingConstants.LEFT);
+    conteudoPrincipal.add(botaoComTi,g1); 
+    conteudoPrincipal.add(new JLabel("Nome da Tarefa"),g2);
+    conteudoPrincipal.add(new JTextArea(20,80),g3);
+    botaoCadastrar.setForeground(Color.WHITE);
+    botaoCadastrar.setBackground(corFundo);
+    conteudoPrincipal.add(botaoCadastrar,g4);
 
-    
-
-
-
-    aux.add(botaoComTi,g1);
-
-    aux.add(new JLabel("Nome da Tarefa"));
-
-    aux.add(new JTextArea(20, 110));
-
-
-
-    auxiliar.add(aux);
-    return auxiliar;
+    flow.add(conteudoPrincipal);
+    return flow;
   }
 
   
