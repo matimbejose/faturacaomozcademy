@@ -5,7 +5,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class Tela_cadastro_Estudantes extends JFrame {
+public class CadastrarEstudante extends JFrame {
 
     private JButton paginaInicial,estudantes,disciplinas,formacao,financas, bCadastrarEst;
     private JLabel labelLogo;
@@ -25,7 +25,7 @@ public class Tela_cadastro_Estudantes extends JFrame {
     private Color corFundo;
     private GridBagConstraints  g1,g2, g3, g4, g5;
 
-    public Tela_cadastro_Estudantes(){
+    public CadastrarEstudante(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setTitle("Estudantes");
@@ -207,8 +207,5 @@ public class Tela_cadastro_Estudantes extends JFrame {
         return aux;
     }
 
-    public static void main(String[] args) {
-        new Tela_cadastro_Estudantes();
-    }
 
 }

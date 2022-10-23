@@ -1,5 +1,4 @@
 package view.Formacao;
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -30,7 +29,6 @@ public class ListarFormacao extends JFrame {
     add(BorderLayout.NORTH, Logo());
     add(BorderLayout.CENTER, conteuddo());
     add(BorderLayout.WEST, Menu());
-
     pack();
     setVisible(true);
   }
@@ -41,7 +39,7 @@ public class ListarFormacao extends JFrame {
     disciplinas = new JButton("Disciplinas    ");
     formacao = new JButton("   Formacao   ");
     financas = new JButton("  Finanacas   ");
-    botaoComTi = new JButton("    Lista     de  Formacao            ");
+    botaoComTi = new JButton("    Lista     de  Formacao            ");botaoComTi.setHorizontalAlignment(SwingConstants.LEFT);barraRolagem = new JScrollPane(tabela);     
     logo = new ImageIcon();
     corFundo = new Color(30, 30, 30);
     corMenos = new Color(216, 155, 155, 1);
@@ -53,11 +51,12 @@ public class ListarFormacao extends JFrame {
     g5 = new GridBagConstraints();
     g6 = new GridBagConstraints();
     botaoCadastrar = new JButton("Cadastra Novo");
-    botaoMaisProcurado = new JButton("Mais Procuradas");
-    botaoMenosProcurado = new JButton("Menos Procuradas");
+    botaoMaisProcurado = new JButton("Mais Procuradas"); botaoMaisProcurado.setBackground(Color.GREEN);
+    botaoMenosProcurado = new JButton("Menos Procuradas");     botaoMenosProcurado.setBackground(Color.pink);
     botaoGerarRelatorio = new JButton("Gerar Relatorio");
     tabela = new JTable(dados, colunas);
-    barraRolagem = new JScrollPane(tabela);
+    botaoComTi.setEnabled(false);
+    ImagemFormacao = new ImageIcon("Img/certificacao.png");
   }
 
   public JPanel Logo() {
@@ -99,9 +98,8 @@ public class ListarFormacao extends JFrame {
 
     JPanel agrupaDoisBotoes = new JPanel(new GridLayout(1, 2, 10, 10));
     agrupaDoisBotoes.setBorder(new EmptyBorder(30, 2, 40, 5));
+    agrupaDoisBotoes.setBackground(Color.white);
 
-    botaoMaisProcurado.setBackground(Color.GREEN);
-    botaoMenosProcurado.setBackground(Color.pink);
 
     agrupaDoisBotoes.add(botaoMaisProcurado);
     agrupaDoisBotoes.add(botaoMenosProcurado);
@@ -120,26 +118,40 @@ public class ListarFormacao extends JFrame {
     g4.gridx = 0;
     g4.anchor = GridBagConstraints.WEST;
 
+    g5.gridx = 0;
+    g5.anchor = GridBagConstraints.EAST;
+
 
     JPanel listaComTabela = new JPanel();
     barraRolagem.setPreferredSize(new Dimension(700, 100));
     listaComTabela.add(barraRolagem);
+    listaComTabela.setBackground(Color.white);
 
 
 
-    botaoComTi.setHorizontalAlignment(SwingConstants.LEFT);
-    botaoComTi.setEnabled(false);
-
-
-    ImagemFormacao = new ImageIcon("Img/certificacao.png");
     labelImagemFormacao = new JLabel(ImagemFormacao);
+
+    JPanel agrupaCadastrarRela  = new JPanel();
+    agrupaCadastrarRela.setBorder(new EmptyBorder(100, 10, 10, 5));
+    botaoCadastrar.setForeground(Color.WHITE);
+    botaoCadastrar.setBackground(corFundo);
+
+    botaoGerarRelatorio.setBackground(corFundo);
+    botaoGerarRelatorio.setForeground(Color.WHITE);
+
+    agrupaCadastrarRela.add(botaoCadastrar);
+    agrupaCadastrarRela.add(botaoGerarRelatorio);
+    agrupaCadastrarRela.setBackground(Color.white);
 
     conteudoPrincipal.add(labelImagemFormacao, g1);
     conteudoPrincipal.add(agrupaDoisBotoes, g2);
     conteudoPrincipal.add(botaoComTi,g3);
     conteudoPrincipal.add(listaComTabela,g4);
+    conteudoPrincipal.setBackground(Color.white);
+    conteudoPrincipal.add(agrupaCadastrarRela,g5);
 
     flow.add(conteudoPrincipal);
+    flow.setBackground(Color.white);
     return flow;
   }
 

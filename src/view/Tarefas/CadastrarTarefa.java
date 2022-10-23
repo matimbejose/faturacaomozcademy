@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class Tarefa extends JFrame {
+public class CadastrarTarefa extends JFrame {
 private JButton paginaInicial,estudantes,disciplinas,formacao,financas;
 private JLabel labelLogo;
 private JButton botaoComTi,botaoCadastrar;
@@ -12,7 +12,7 @@ private Color corFundo;
 private GridBagConstraints  g1,g2, g3, g4, g5;
 
 
-public Tarefa() {
+public CadastrarTarefa() {
   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
     add(BorderLayout.NORTH, Logo());
@@ -39,7 +39,7 @@ public Tarefa() {
     g3 = new GridBagConstraints();
     g4 = new GridBagConstraints();
     g5 = new GridBagConstraints();
-    botaoCadastrar = new JButton("cadastra");
+    botaoCadastrar = new JButton("Cadastra");
   }
  
   public JPanel Logo() {
@@ -88,12 +88,16 @@ public Tarefa() {
 
     g2.gridx = 0;
     g2.anchor = GridBagConstraints.WEST;
+    g2.insets = new Insets(20, 1, 1, 1);
 
     g3.gridx = 0;
     g3.anchor = GridBagConstraints.WEST;
+    g3.insets = new Insets(20, 1, 1, 1);
+
 
     g4.gridx = 0;
     g4.anchor = GridBagConstraints.WEST;
+    g4.insets = new Insets(20, 1, 1, 1);
 
     botaoComTi.setEnabled(false);
     botaoComTi.setHorizontalAlignment(SwingConstants.LEFT);
@@ -110,8 +114,6 @@ public Tarefa() {
 
   
 
-  public static void main(String[] args) {
-    new Tarefa();
-  }
+ 
 
 }

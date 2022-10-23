@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class TelaEstudante extends JFrame {
+public class ListarEstudante extends JFrame {
 
     private JButton paginaInicial,estudantes,disciplinas,formacao,financas, bCadastrarEst;
     private JLabel labelLogo, labelPesquisarEst;
@@ -14,8 +14,9 @@ public class TelaEstudante extends JFrame {
     private JTextField txtPesqEstudante;
     private ImageIcon logo, imgAddEst;
     private Color corFundo;
+    private GridBagConstraints  g1,g2,g3,g4,g5;
 
-    public TelaEstudante(){
+    public ListarEstudante(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setTitle("Estudantes");
@@ -38,34 +39,33 @@ public class TelaEstudante extends JFrame {
         botaoComTi = new JButton();
         bCadastrarEst= new JButton("Cadastrar Estudante",imgAddEst);bCadastrarEst.setBackground(Color.WHITE);
         logo = new ImageIcon();
-        imgAddEst = new ImageIcon("C:\\Users\\Clemont\\Desktop\\Elihud, Cl\\POO II\\Grupo2\\Prrojecto_Grupo2\\src\\view\\addpeople.png");
-
+        imgAddEst = new ImageIcon("Img/addpeople.png");
         labelLogo = new JLabel();
         corFundo = new Color(30, 30, 30);
-
-
         String[] colunasEstudantes = {"idEstudante", "Nome","Nivel","Formacao/disciplina","Status","Data De Inscricao"};
         String[][] conteudoEstudantes = {{"01","Clementina","12 classe","Matematica","Regular","17-03-2022"},{"02","Jose","2 ano","Power Point","Nao-Regular","9-10-2022"}};
         tblEstudantes = new JTable(conteudoEstudantes, colunasEstudantes);
         scrEstudantes = new JScrollPane(tblEstudantes);
         scrEstudantes.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrEstudantes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-        labelPesquisarEst = new JLabel("Pesquisar Estudante");
-        txtPesqEstudante = new JTextField(20);
-
+        labelPesquisarEst = new JLabel("Imforme o nome do Estudante a Pesquisar");
+        txtPesqEstudante = new JTextField(200);
         bCadastNovo = new JButton("cadastrar Novo");bCadastNovo.setBackground(Color.BLACK);bCadastNovo.setForeground(Color.WHITE);
         bGerarRelatorio = new JButton("Gerar Relatorio");bGerarRelatorio.setForeground(Color.WHITE);bGerarRelatorio.setBackground(Color.BLACK);
+        g1= new GridBagConstraints();
+        g2= new GridBagConstraints();
+        g3= new GridBagConstraints();
+        g4= new GridBagConstraints();
+
     }
 
     public JPanel Logo() {
         inicializarComponents();
-        logo = new ImageIcon("C:\\Users\\Clemont\\Desktop\\Elihud, Cl\\POO II\\Grupo2\\Prrojecto_Grupo2\\src\\view\\logo.png");
+        logo = new ImageIcon("Img/logo.png");
         JPanel aux = new JPanel(new FlowLayout(FlowLayout.LEFT));
         aux.add(labelLogo = new JLabel(logo));
         aux.setPreferredSize(new Dimension(1500, 130));
         aux.setBackground(corFundo);
-
         return aux;
     }
 
@@ -84,7 +84,6 @@ public class TelaEstudante extends JFrame {
         painConteudo.add(new JPanel());
         painConteudo.add(peinMedio2());
         painConteudo.add(painButInferior());
-
         return painConteudo;
     }
 
@@ -97,19 +96,24 @@ public class TelaEstudante extends JFrame {
 
     private JPanel painButInferior() {
         JPanel painButInferior = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        painButInferior.setBorder(new EmptyBorder(30,3, 4, 5));
         painButInferior.add(bGerarRelatorio);
-
+        painButInferior.add(bCadastNovo);
         return painButInferior;
 
     }
 
     private JPanel painMedio1() {
+        g1.gridx = 0; g2.gridx = 1;
+
+        JPanel painelPesquisar = new JPanel(new GridBagLayout());
+        painelPesquisar.add(txtPesqEstudante, g1);
+        painelPesquisar.add(new JButton("b"),g2);
+
         JPanel painMedio = new JPanel();
         painMedio.setLayout(new BoxLayout(painMedio,BoxLayout.Y_AXIS));
         painMedio.add(labelPesquisarEst);
-        painMedio.add(txtPesqEstudante);
-        painMedio.add(new JPanel());
-        painMedio.add(new JPanel());
+        painMedio.add(painelPesquisar);
 
         return painMedio;
     }
@@ -139,8 +143,7 @@ public class TelaEstudante extends JFrame {
         aux.setBackground(corFundo);
         return aux;
     }
-
     public static void main(String[] args) {
-        new TelaEstudante();
+        new ListarEstudante();
     }
 }
