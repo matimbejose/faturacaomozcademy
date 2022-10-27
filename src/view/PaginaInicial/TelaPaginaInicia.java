@@ -34,8 +34,7 @@ public class TelaPaginaInicia extends JFrame {
 
 
     public void inicializarComponents() {
-        paginaInicial = new JButton("Pagina Inicial");paginaInicial.setBackground(Color.WHITE);paginaInicial.setForeground(Color.BLACK);
-        estudantes = new   JButton("Estudantes    ");estudantes.setBackground(Color.WHITE);estudantes.setForeground(Color.BLACK);
+        paginaInicial = new JButton("Pagina Inicial");paginaInicial.setBackground(Color.WHITE);paginaInicial.setForeground(Color.BLACK);    estudantes = new   JButton("Estudantes    ");estudantes.setBackground(Color.WHITE);estudantes.setForeground(Color.BLACK);
         disciplinas =  new JButton("Disciplinas     ");disciplinas.setBackground(Color.WHITE);disciplinas.setForeground(Color.BLACK);
         formacao =  new JButton("   Formacao    ");formacao.setBackground(Color.WHITE);formacao.setForeground(Color.BLACK);
         financas =   new JButton("  Finanacas    ");financas.setBackground(Color.WHITE);financas.setForeground(Color.BLACK);
@@ -52,7 +51,7 @@ public class TelaPaginaInicia extends JFrame {
         radTerminar = new JCheckBox("Terminar"); radFazerTelas = new JCheckBox("Fazer Telas");  radImplementar = new JCheckBox("Implementar");
         bRemov1 = new JButton("Remover");bRemov1.setBackground(Color.WHITE);bRemov2 = new JButton("Remover");bRemov2.setBackground(Color.WHITE);
         bRemov3 = new JButton("Remover");bRemov3.setBackground(Color.WHITE);
-        bAdicionarTarefa = new JButton("Adicionar Tarefa");bAdicionarTarefa.setBackground(Color.BLACK);bAdicionarTarefa.setForeground(Color.WHITE);
+        bAdicionarTarefa = new JButton("Adicionar Tarefa");bAdicionarTarefa.setBackground(Color.BLACK);bAdicionarTarefa.setForeground(Color.WHITE);bAdicionarTarefa.setPreferredSize(new Dimension(150,60));
     }
 
     public JPanel Logo() {
@@ -69,7 +68,7 @@ public class TelaPaginaInicia extends JFrame {
         DefaultPieDataset pizza = new DefaultPieDataset();
         pizza.setValue("Nao-Regular",10);
         pizza.setValue("Regular", 4);
-        JFreeChart grafico = ChartFactory.createPieChart("Situacao dos Estudantes",pizza, true,true,false);
+        JFreeChart grafico = ChartFactory.createPieChart("Situação  dos Estudantes",pizza, true,true,false);
         //PARAMETROS >>>> (titulo, o grafico, legendas-visiveis ou nao, tipo de cada fatia,  url)
         ChartPanel painel = new ChartPanel(grafico);
         return painel;

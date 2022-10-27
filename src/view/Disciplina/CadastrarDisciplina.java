@@ -125,6 +125,11 @@ public CadastrarDisciplina() {
     return flow;
   }
 
+
+  public static void main(String[] args) {
+    new CadastrarDisciplina();
+  }
+
   
 
 

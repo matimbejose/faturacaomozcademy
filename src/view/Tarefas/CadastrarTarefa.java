@@ -39,7 +39,7 @@ public CadastrarTarefa() {
     g3 = new GridBagConstraints();
     g4 = new GridBagConstraints();
     g5 = new GridBagConstraints();
-    botaoCadastrar = new JButton("Cadastra");
+    botaoCadastrar = new JButton("Cadastra");botaoCadastrar.setPreferredSize(new Dimension(150,45));
   }
  
   public JPanel Logo() {
@@ -110,6 +110,10 @@ public CadastrarTarefa() {
 
     flow.add(conteudoPrincipal);
     return flow;
+  }
+
+  public static void main(String[]  args) {
+    new CadastrarTarefa();
   }
 
   

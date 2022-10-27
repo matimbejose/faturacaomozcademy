@@ -6,7 +6,12 @@ import javax.swing.border.EmptyBorder;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.LevelRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.xy.XYZDataset;
 
 public class Financas extends JFrame {
 private JButton paginaInicial,estudantes,disciplinas,formacao,financas,botaoEstudanteRegular,botaoEstudanteNaoRegular,botaoDisciplina, botaoFormacacao,botaoComTi;
@@ -82,13 +87,25 @@ public Financas() {
     return aux;
   }
 
-  public ChartPanel criargrafico(){
-    DefaultPieDataset pizza = new DefaultPieDataset();
-    pizza.setValue("Nao-Regular",10);
-    pizza.setValue("Regular", 4);
-    JFreeChart grafico = ChartFactory.createPieChart("Situacao dos Estudantes",pizza, true,true,false);
-    //PARAMETROS >>>> (titulo, o grafico, legendas-visiveis ou nao, tipo de cada fatia,  url)
-    ChartPanel painel = new ChartPanel(grafico);
+  public JPanel  criargrafico(){
+    JPanel painel = new JPanel();
+    DefaultCategoryDataset  barChartData = new DefaultCategoryDataset();
+    barChartData.setValue(2000, "matimbe", "Novembro");
+    barChartData.setValue(3000, "jose", "Novembro");
+    barChartData.setValue(6000, "justino", "Novembro");
+    barChartData.setValue(16000, "justino", "Novembro");
+
+
+    JFreeChart barChart = ChartFactory.createBarChart("Retabilidade","Mês", "Valores Pagos",barChartData, PlotOrientation.VERTICAL, false, true, false);
+    CategoryPlot  barchrt  = barChart.getCategoryPlot();
+    barchrt.setRangeGridlinePaint(Color.ORANGE);
+
+
+
+    ChartPanel barPanel = new  ChartPanel(barChart);
+    painel.setBackground(Color.white);
+    painel.add(barPanel);
+
     return painel;
 }
   

@@ -11,15 +11,14 @@ public class ListarFormacao extends JFrame {
   private Color corFundo, corMais, corMenos;
   private GridBagConstraints g1, g2, g3, g4, g5, g6;
   private Object[][] dados = {
-      { "Ana Monteiro", "48 9923-7898", "ana.monteiro@gmail.com" },
-      { "João da Silva", "48 8890-3345", "joaosilva@hotmail.com" },
-      { "Pedro Cascaes", "48 9870-5634", "pedrinho@gmail.com" },
-      { "Pedro Cascaes", "48 9870-5634", "pedrinho@gmail.com" },
-      { "Pedro Cascaes", "48 9870-5634", "pedrinho@gmail.com" },
-      { "Pedro Cascaes", "48 9870-5634", "pedrinho@gmail.com" },
-      { "Pedro Cascaes", "48 9870-5634", "pedrinho@gmail.com" },
+      { "01", "Introducao a programacao", "100MT" },
+      { "01", "Introducao a programacao", "100MT" },
+      { "01", "Introducao a programacao", "100MT" },
+      { "01", "Introducao a programacao", "100MT" },
+      { "01", "Introducao a programacao", "100MT" },
+      { "01", "Introducao a programacao", "100MT" },
   };
-  private String[] colunas = { "Nome", "Telefone", "Email" };
+  private String[] colunas = { "idFormacao", "Nome", "Preco" };
   private JScrollPane barraRolagem;
   private JTable tabela;
 
@@ -50,10 +49,10 @@ public class ListarFormacao extends JFrame {
     g4 = new GridBagConstraints();
     g5 = new GridBagConstraints();
     g6 = new GridBagConstraints();
-    botaoCadastrar = new JButton("Cadastra Novo");
+    botaoCadastrar = new JButton("Cadastra Novo");botaoCadastrar.setPreferredSize(new Dimension(150,45));
     botaoMaisProcurado = new JButton("Mais Procuradas"); botaoMaisProcurado.setBackground(Color.GREEN);
     botaoMenosProcurado = new JButton("Menos Procuradas");     botaoMenosProcurado.setBackground(Color.pink);
-    botaoGerarRelatorio = new JButton("Gerar Relatorio");
+    botaoGerarRelatorio = new JButton("Gerar Relatorio");botaoGerarRelatorio.setPreferredSize(new Dimension(150,45));
     tabela = new JTable(dados, colunas);
     botaoComTi.setEnabled(false);
     ImagemFormacao = new ImageIcon("Img/certificacao.png");
