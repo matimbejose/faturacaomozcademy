@@ -1,4 +1,5 @@
 package view.Login;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,16 +15,16 @@ public class TelaLogin extends JFrame {
 
     JButton bLogin;
 
-    private void inicializaJanela(){
-        this.setSize(500,600);
+    public void inicializaJanela(){
+        this.setSize(1000,700);
         this.setLayout(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
+
         this.setTitle("Login");
     }
 
-    private void inicializarComponentes(){
+    public void inicializarComponentes(){
         //The labels
         labEmail = new JLabel("Email:");labEmail.setForeground(Color.WHITE);
         labSenha = new JLabel("Senha:");labSenha.setForeground(Color.WHITE);
@@ -47,24 +48,26 @@ public class TelaLogin extends JFrame {
         g1 = new GridBagConstraints();
 
         painButaoLogin = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        painButaoLogin.setBounds(100,575,600,50);
+        painButaoLogin.setBounds(100,600,750,80);
         painButaoLogin.add(bLogin);
     }
 
-    private TelaLogin(){
+    public TelaLogin(){
         inicializaJanela();
         inicializarComponentes();
         this.add(painelPrincipal());
         this.add(painButaoLogin);
+
+        this.setVisible(true);
     }
 
     private JPanel painelPrincipal() {
-        JPanel painelPrincipal = new JPanel(new GridLayout(1,2));
-        //painelPrincipal.setLayout(new BoxLayout(painelPrincipal,BoxLayout.X_AXIS));
-        painelPrincipal.setBounds(100, 180, 600,390);
+        JPanel painelPrincipal = new JPanel();
+        painelPrincipal.setLayout(new GridLayout(1,2));
+        painelPrincipal.setBounds(150, 150, 700,400);
         painelPrincipal.add(painelEsquerdo());
         painelPrincipal.add(painelDireito());
-        
+
         return painelPrincipal;
     }
 
@@ -80,7 +83,8 @@ public class TelaLogin extends JFrame {
 
         g1.gridy++;painelDireito.add(labEmail,g1);
 
-        g1.gridy++;painelDireito.add(txtEmail, g1);
+        g1.gridy++;
+        g1.fill=GridBagConstraints.VERTICAL;painelDireito.add(txtEmail, g1);
 
         g1.gridy+=3;painelDireito.add(labSenha,g1);
 
@@ -91,7 +95,8 @@ public class TelaLogin extends JFrame {
     }
 
     private JPanel painelEsquerdo() {
-        JPanel painelEsquerdo = new JPanel(new BorderLayout());
+        JPanel painelEsquerdo = new JPanel();
+        painelEsquerdo.setLayout(new BorderLayout());
         painelEsquerdo.add(labImagem,BorderLayout.CENTER);
         painelEsquerdo.setBackground(Color.BLACK);
 

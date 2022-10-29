@@ -51,7 +51,7 @@ public class TelaPaginaInicia extends JFrame {
         radTerminar = new JCheckBox("Terminar"); radFazerTelas = new JCheckBox("Fazer Telas");  radImplementar = new JCheckBox("Implementar");
         bRemov1 = new JButton("Remover");bRemov1.setBackground(Color.WHITE);bRemov2 = new JButton("Remover");bRemov2.setBackground(Color.WHITE);
         bRemov3 = new JButton("Remover");bRemov3.setBackground(Color.WHITE);
-        bAdicionarTarefa = new JButton("Adicionar Tarefa");bAdicionarTarefa.setBackground(Color.BLACK);bAdicionarTarefa.setForeground(Color.WHITE);bAdicionarTarefa.setPreferredSize(new Dimension(150,60));
+        bAdicionarTarefa = new JButton("Adicionar Tarefa");bAdicionarTarefa.setBackground(Color.BLACK);bAdicionarTarefa.setForeground(Color.WHITE);bAdicionarTarefa.setPreferredSize(new Dimension(150,35));
     }
 
     public JPanel Logo() {

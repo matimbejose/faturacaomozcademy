@@ -50,10 +50,10 @@ public class ListarEstudante extends JFrame {
     g4 = new GridBagConstraints();
     g5 = new GridBagConstraints();
     g6 = new GridBagConstraints();
-    botaoCadastrar = new JButton("Cadastra Novo");botaoCadastrar.setPreferredSize(new Dimension(150,45));
+    botaoCadastrar = new JButton("Cadastra Novo");botaoCadastrar.setPreferredSize(new Dimension(150,35));
     botaoMaisProcurado = new JButton("Mais Procuradas"); botaoMaisProcurado.setBackground(Color.GREEN);
     botaoMenosProcurado = new JButton("Menos Procuradas");     botaoMenosProcurado.setBackground(Color.pink);
-    botaoGerarRelatorio = new JButton("Gerar Relatorio");botaoGerarRelatorio.setPreferredSize(new Dimension(150,45));
+    botaoGerarRelatorio = new JButton("Gerar Relatorio");botaoGerarRelatorio.setPreferredSize(new Dimension(150,35));
     tabela = new JTable(dados, colunas);
     botaoComTi.setEnabled(false);
     ImagemFormacao = new ImageIcon("Img/addpeople.png");
