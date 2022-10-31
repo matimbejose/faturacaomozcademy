@@ -16,12 +16,12 @@ public class TelaLogin extends JFrame {
     JButton bLogin;
 
     public void inicializaJanela(){
-        this.setSize(1000,700);
-        this.setLayout(null);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+        setSize(1000,700);
+        setLayout(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
-        this.setTitle("Login");
+        setTitle("Login");
     }
 
     public void inicializarComponentes(){
@@ -53,12 +53,15 @@ public class TelaLogin extends JFrame {
     }
 
     public TelaLogin(){
+
         inicializaJanela();
         inicializarComponentes();
-        this.add(painelPrincipal());
-        this.add(painButaoLogin);
+        add(painelPrincipal());
+        add(painButaoLogin);
 
-        this.setVisible(true);
+        pack();
+
+        setVisible(true);
     }
 
     private JPanel painelPrincipal() {

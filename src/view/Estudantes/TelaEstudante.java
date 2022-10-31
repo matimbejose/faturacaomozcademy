@@ -38,7 +38,7 @@ public class TelaEstudante extends JFrame {
         botaoComTi = new JButton();
         bCadastrarEst= new JButton("Cadastrar Estudante",imgAddEst);bCadastrarEst.setBackground(Color.WHITE);
         logo = new ImageIcon();
-        imgAddEst = new ImageIcon("C:\\Users\\USER-\\Documents\\2 ano\\2 sem\\POO II\\Grupo2_POO2\\Prrojecto_Grupo2\\src\\view\\addpeople.png");
+        imgAddEst = new ImageIcon("Img/addpeople.png");
 
         labelLogo = new JLabel();
         corFundo = new Color(30, 30, 30);
@@ -60,7 +60,7 @@ public class TelaEstudante extends JFrame {
 
     public JPanel Logo() {
         inicializarComponents();
-        logo = new ImageIcon("C:\\Users\\Clemont\\Desktop\\Elihud, Cl\\POO II\\Grupo2\\Prrojecto_Grupo2\\src\\view\\logo.png");
+        logo = new ImageIcon("Img/logo.png");
         JPanel aux = new JPanel(new FlowLayout(FlowLayout.LEFT));
         aux.add(labelLogo = new JLabel(logo));
         aux.setPreferredSize(new Dimension(1500, 130));

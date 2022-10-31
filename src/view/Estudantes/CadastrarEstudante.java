@@ -2,7 +2,6 @@ package view.Estudantes;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,12 +12,11 @@ public class CadastrarEstudante extends JFrame {
     private JLabel labelLogo;
     private JTextField txtNome,txtDtInscricao;
     private  JRadioButton DisciplinaR,FormacaoR;
-    private JCheckBox chExcel,chWord, chPPoint,cCode,radNiv5,radNiv6,radNiv7,radNiv8,radNiv9,radNiv10,radNiv11,radNiv12;
+    private JCheckBox chExcel,chWord, chPPoint,cCode,radNiv5,radNiv6,radNiv7,radNiv8,radNiv9,radNiv10,radNiv11,radNiv12,DisciplinaMat,DisciplinaFis,DisciplinaQ,DisciplinaB;
     private ImageIcon logo;
     private Color corFundo;
     private GridBagConstraints  g1,g2, g3, g4, g5,g6,g7,g8,g9, g10;
     private ButtonGroup  GrupoDeNivel;
-
 
     public CadastrarEstudante(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,6 +82,10 @@ public class CadastrarEstudante extends JFrame {
         radNiv9 = new JCheckBox("nivel 9"); radNiv9.setBackground(Color.WHITE); radNiv10 = new JCheckBox("nivel 10"); radNiv10.setBackground(Color.WHITE);radNiv11 = new JCheckBox("nivel 11");radNiv11.setBackground(Color.WHITE);radNiv12 = new JCheckBox("nivel 12");radNiv12.setBackground(Color.WHITE);
         GrupoDeNivel.add(radNiv5);GrupoDeNivel.add(radNiv6);GrupoDeNivel.add(radNiv7);GrupoDeNivel.add(radNiv8);GrupoDeNivel.add(radNiv9);GrupoDeNivel.add(radNiv10);GrupoDeNivel.add(radNiv11);GrupoDeNivel.add(radNiv12);
         bCadastrarEst = new JButton("Cadastrar");bCadastrarEst.setBackground(corFundo);bCadastrarEst.setForeground(Color.WHITE);
+        DisciplinaMat =  new JCheckBox("Matematica");DisciplinaMat.setBackground(Color.WHITE); 
+        DisciplinaFis =  new JCheckBox("Fisica");DisciplinaFis.setBackground(Color.WHITE); 
+        DisciplinaQ =  new JCheckBox("Quimica");DisciplinaQ.setBackground(Color.WHITE); 
+        DisciplinaB =  new JCheckBox("Biologia");DisciplinaB.setBackground(Color.WHITE); 
     }
 
     public JPanel Logo() {
@@ -150,18 +152,18 @@ public class CadastrarEstudante extends JFrame {
 
         g8.gridx = 0;
         g8.gridy = 3;
-        g8.anchor = GridBagConstraints.NORTHEAST;
+        g8.anchor = GridBagConstraints.CENTER;
         g8.insets = new Insets(10, 1, 1, 1);
 
         g9.gridx = 0;
         g9.gridy = 4;
-        g9.anchor = GridBagConstraints.NORTHEAST;
+        g9.anchor = GridBagConstraints.CENTER;
         g9.insets = new Insets(1, 1, 1, 1);
 
         g10.gridx = 0;
         g10.gridy = 7;
-        g10.anchor = GridBagConstraints.NORTHEAST;
-        g10.insets = new Insets(1, 1, 1, 1);
+        g10.anchor = GridBagConstraints.SOUTHEAST;
+        g10.insets = new Insets(200, 1, 1, 1);
 
 
 
@@ -175,13 +177,13 @@ public class CadastrarEstudante extends JFrame {
         conteudoPrincipal.add(txtDtInscricao,g5);
         FormacaoR.setBackground(Color.WHITE);
         conteudoPrincipal.add(FormacaoR,g6);
+
+     
         conteudoPrincipal.add(Formacoes(),g7);
         DisciplinaR.setBackground(Color.white);
         conteudoPrincipal.add(DisciplinaR,g8);
         conteudoPrincipal.add(painelParaNivel(),g9);
         conteudoPrincipal.add(bCadastrarEst,g10);
-
-
         conteudoPrincipal.setBackground(Color.white);
         flow.add(conteudoPrincipal);
         flow.setBackground(Color.WHITE);
@@ -190,43 +192,58 @@ public class CadastrarEstudante extends JFrame {
 
 
     private JPanel Formacoes() {
-        JPanel aux = new JPanel(new GridLayout(4,1,1,1));
+        JPanel aux = new JPanel(new GridLayout(3,1,1,1));
         aux.add(chPPoint);
         aux.add(chWord);
         aux.add(chExcel);
-        aux.add(cCode);
-
         aux.setBackground(Color.WHITE);
         return aux;
     }
 
-    private JPanel Disciplina() {
-        JPanel aux = new JPanel(new GridLayout(4,1,1,1));
-        aux.add(chPPoint);
-        aux.add(chWord);
-        aux.add(chExcel);
-        aux.add(cCode);
+    private   JFrame MostraDisciplina() {
+        JFrame aux = new JFrame();
+        aux.setUndecorated(true);
+
+        JPanel agrupaCharis = new JPanel(new GridLayout(4,1,4,4));
+
+        agrupaCharis.add(DisciplinaMat);
+        agrupaCharis.add(DisciplinaFis);
+        agrupaCharis.add(DisciplinaQ);
+        agrupaCharis.add(DisciplinaB);
+
+        agrupaCharis.setBackground(Color.white);
+
 
         aux.setBackground(Color.WHITE);
+        aux.add(agrupaCharis);
+        aux.pack();
+        aux.setVisible(true);
+        aux.setLocation(805,300);
         return aux;
     }
+
+
 
 
     private JPanel painelParaNivel() {
 
-        JPanel aux = new JPanel(new GridLayout(12,1,1,1));
-        aux.add(radNiv5);
-        aux.add(radNiv6);
-        aux.add(radNiv7);
-        aux.add(radNiv8);
-        aux.add(radNiv9);
+        JPanel aux = new JPanel();
+        aux.setLayout(new BoxLayout(aux, BoxLayout.PAGE_AXIS));
         aux.add(radNiv10);
+        radNiv10.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MostraDisciplina();
+            }
+
+        });
         aux.add(radNiv11);
         aux.add(radNiv12);
         aux.setBackground(Color.WHITE);
         return aux;
     }
 
+ 
 
   
 

@@ -8,10 +8,9 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.category.LevelRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.xy.XYZDataset;
+import java.awt.event.*;
+
 
 public class Financas extends JFrame {
 private JButton paginaInicial,estudantes,disciplinas,formacao,financas,botaoEstudanteRegular,botaoEstudanteNaoRegular,botaoDisciplina, botaoFormacacao,botaoComTi;
@@ -20,6 +19,7 @@ private ImageIcon logo;
 private Color corFundo;
 private GridBagConstraints  g1,g2, g3, g4, g5,g6;
 private JTextField nomeDisciplina,precoDisciplina;
+private Icon iconeEstR,iconeEstNR,iconeDisc,iconeFormIcon;
 
 
 public Financas() {
@@ -47,15 +47,19 @@ public Financas() {
     g4 = new GridBagConstraints();
     g5 = new GridBagConstraints();
     g6 = new GridBagConstraints();
-    // botaoCadastrar = new JButton("Cadastra");  botaoCadastrar.setPreferredSize(new Dimension(100,50));
+    iconeEstR = new ImageIcon("Img/estude.png");
+    iconeEstNR = new ImageIcon("Img/gathering.png");
+    iconeDisc = new ImageIcon("Img/pilha-de-livros.png");
+    iconeFormIcon = new ImageIcon("Img/graduated.png");
     logo = new ImageIcon("Img/logo.png");
     labelLogo = new JLabel(logo);
     nomeDisciplina = new  JTextField(); nomeDisciplina.setPreferredSize(new Dimension(700,50));
     precoDisciplina =  new JTextField(); precoDisciplina.setPreferredSize(new Dimension(700,50  ));
-    botaoEstudanteRegular = new JButton("Estudantes Regular Total : $20000");botaoEstudanteRegular.setEnabled(false);botaoEstudanteRegular.setPreferredSize(new Dimension(100,120));
-    botaoEstudanteNaoRegular = new JButton("Estudantes NRegular Total : $20000");botaoEstudanteNaoRegular.setEnabled(false);
-    botaoDisciplina = new JButton("Disciplinas : $20000");botaoDisciplina.setEnabled(false);
-    botaoFormacacao = new JButton("Formação : $20000");botaoFormacacao.setEnabled(false);
+    botaoEstudanteRegular = new JButton("Estudantes Regular",iconeEstR);botaoEstudanteRegular.setPreferredSize(new Dimension(250,120)); 
+    botaoEstudanteNaoRegular = new JButton("Estudantes NRegular ",iconeEstNR);
+    botaoDisciplina = new JButton("Disciplinas ",iconeDisc);
+    botaoFormacacao = new JButton("Formação ",iconeFormIcon
+    );
   }
  
   public JPanel Logo() {
@@ -119,9 +123,40 @@ public Financas() {
     
     JPanel painCard = new JPanel(new GridLayout(1, 4, 10,10));
     painCard.add(botaoEstudanteRegular);
+    botaoEstudanteRegular.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JOptionPane.showMessageDialog(null, "Total Pago: 2000Mt");
+      }
+
+  });
+
     painCard.add(botaoEstudanteNaoRegular);
+    botaoEstudanteNaoRegular.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JOptionPane.showMessageDialog(null, "Total Pago: 2000Mt");
+      }
+
+  });
     painCard.add(botaoDisciplina);
+    botaoDisciplina.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JOptionPane.showMessageDialog(null, "Total Pago: 2000Mt");
+      }
+
+  });
     painCard.add(botaoFormacacao);
+    botaoFormacacao.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JOptionPane.showMessageDialog(null, "Total Pago: 2000Mt");
+      }
+
+  });
+
+
 
     painCard.setBackground(Color.white);
                                                       
