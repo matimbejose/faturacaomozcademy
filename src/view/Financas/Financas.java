@@ -1,4 +1,4 @@
-package view.Financas;
+package Financas;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -6,9 +6,9 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
-import view.Disciplina.ListarDisciplina;
-import view.Formacao.ListarFormacao;
-import view.PaginaInicial.TelaPaginaInicia;
+import Disciplina.ListarDisciplina;
+import Formacao.ListarFormacao;
+import PaginaInicial.TelaPaginaInicia;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -110,10 +110,8 @@ public class Financas extends JFrame implements ActionListener{
   public JPanel  criargrafico(){
     JPanel painel = new JPanel();
     DefaultCategoryDataset  barChartData = new DefaultCategoryDataset();
-    barChartData.setValue(2000, "matimbe", "Novembro");
-    barChartData.setValue(3000, "jose", "Novembro");
-    barChartData.setValue(6000, "justino", "Novembro");
-    barChartData.setValue(16000, "justino", "Novembro");
+    barChartData.setValue(200, "matimbe", "Novembro");
+    barChartData.setValue(300, "jose", "Novembro");
 
 
     JFreeChart barChart = ChartFactory.createBarChart("Retabilidade","Mês", "Valores Pagos",barChartData, PlotOrientation.VERTICAL, false, true, false);
@@ -122,9 +120,9 @@ public class Financas extends JFrame implements ActionListener{
 
 
 
-    ChartPanel barPanel = new  ChartPanel(barChart);
+    // ChartPanel barPanel = new  ChartPanel(barChart);
     painel.setBackground(Color.white);
-    painel.add(barPanel);
+    // painel.add(barPanel);
 
     return painel;
   }

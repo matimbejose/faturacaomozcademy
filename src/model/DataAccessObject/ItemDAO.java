@@ -88,4 +88,20 @@ public class ItemDAO {
         }
     }
 
+
+    public boolean createDisciplina(String sql){
+        conexao = new Conectar_a_BD().conectaBD();
+        PreparedStatement pstm=null;
+        try {
+            
+            pstm=conexao.prepareStatement(sql);
+            pstm.executeUpdate();
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("ERRO "+ex);
+            return false;
+        }
+    }
+
 }

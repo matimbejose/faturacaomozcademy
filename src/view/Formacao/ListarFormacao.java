@@ -1,9 +1,9 @@
-package view.Formacao;
+package Formacao;
 
-import view.Disciplina.ListarDisciplina;
-import view.Estudantes.ListarEstudante;
-import view.Financas.Financas;
-import view.PaginaInicial.TelaPaginaInicia;
+import Disciplina.ListarDisciplina;
+import Estudantes.ListarEstudante;
+import Financas.Financas;
+import PaginaInicial.TelaPaginaInicia;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

@@ -1,15 +1,15 @@
-package view.PaginaInicial;
+package PaginaInicial;
 
 import model.DataAccessObject.EstudanteDAO;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
-import view.Disciplina.ListarDisciplina;
-import view.Estudantes.ListarEstudante;
-import view.Financas.Financas;
-import view.Formacao.ListarFormacao;
-import view.Tarefas.CadastrarTarefa;
+import Disciplina.ListarDisciplina;
+import Estudantes.ListarEstudante;
+import Financas.Financas;
+import Formacao.ListarFormacao;
+import Tarefas.CadastrarTarefa;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;

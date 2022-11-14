@@ -1,10 +1,10 @@
-package view.Tarefas;
+package Tarefas;
 
-import view.Financas.Financas;
-import view.Disciplina.ListarDisciplina;
-import view.Estudantes.ListarEstudante;
-import view.Formacao.ListarFormacao;
-import view.PaginaInicial.TelaPaginaInicia;
+import Financas.Financas;
+import Disciplina.ListarDisciplina;
+import Estudantes.ListarEstudante;
+import Formacao.ListarFormacao;
+import PaginaInicial.TelaPaginaInicia;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

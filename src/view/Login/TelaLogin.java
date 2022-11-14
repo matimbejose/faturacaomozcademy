@@ -1,8 +1,8 @@
-package view.Login;
+package Login;
 
 import model.DataAccessObject.UsuarioDAO;
 import model.ValueObject.Usuario;
-import view.PaginaInicial.TelaPaginaInicia;
+import PaginaInicial.TelaPaginaInicia;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,24 +14,22 @@ import java.sql.SQLException;
 public class TelaLogin extends JFrame implements ActionListener {
     JLabel labNome, labSenha;
     JTextField txtNome;
-    JPasswordField pwSenha;
+    private JPasswordField pwSenha;
         public char[] getPWSenha(){
             return pwSenha.getPassword();
         }
     JLabel labImagem, labelImgUser;
     ImageIcon img;
     GridBagConstraints g1;
-
     JPanel painButaoLogin;
 
-    JButton bLogin;
+    MyButton.MyButtonSubmeter bLogin;
 
     public void inicializaJanela(){
         this.setSize(1000,700);
         this.setLayout(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-
         this.setTitle("Login");
     }
 
@@ -44,13 +42,15 @@ public class TelaLogin extends JFrame implements ActionListener {
 
         txtNome = new JTextField(10);
 
-        pwSenha = new JPasswordField();
+
 
         img = new ImageIcon("Img/logo.png");
         labImagem = new JLabel();
         labImagem.setIcon(img);
 
-        bLogin = new JButton("Login");bLogin.setBackground(Color.BLACK);bLogin.setForeground(Color.WHITE);
+        bLogin = new   MyButton.MyButtonSubmeter();bLogin.setBackground(Color.BLACK);bLogin.setForeground(Color.WHITE);
+        bLogin.setText("Login");
+        bLogin.setRadius(20);
         bLogin.addActionListener(this);
 
         g1 = new GridBagConstraints();
@@ -58,6 +58,8 @@ public class TelaLogin extends JFrame implements ActionListener {
         painButaoLogin = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         painButaoLogin.setBounds(100,600,750,80);
         painButaoLogin.add(bLogin);
+
+        pwSenha = new JPasswordField();
     }
 
     private void bLogar(){
@@ -128,6 +130,7 @@ public class TelaLogin extends JFrame implements ActionListener {
         g1.gridy+=3;painelDireito.add(labSenha,g1);
 
         g1.fill=GridBagConstraints.BOTH;
+        
         g1.gridy++;painelDireito.add(pwSenha,g1);
 
         return painelDireito;

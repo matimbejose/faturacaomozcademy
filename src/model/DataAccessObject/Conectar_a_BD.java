@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Conectar_a_BD {
     Connection conector;
     String userDb = "root";
-    String passwordDv = "1234";
+    String passwordDv = "";
 
     public Connection conectaBD(){
         try {
@@ -18,6 +18,9 @@ public class Conectar_a_BD {
 
         return conector;
     }
+
+
+    
 
 
 }

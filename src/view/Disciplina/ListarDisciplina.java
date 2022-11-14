@@ -1,9 +1,9 @@
-package view.Disciplina;
+package Disciplina;
 import model.DataAccessObject.ItemDAO;
-import view.Estudantes.ListarEstudante;
-import view.Financas.Financas;
-import view.Formacao.ListarFormacao;
-import view.PaginaInicial.TelaPaginaInicia;
+import Estudantes.ListarEstudante;
+import Financas.Financas;
+import Formacao.ListarFormacao;
+import PaginaInicial.TelaPaginaInicia;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

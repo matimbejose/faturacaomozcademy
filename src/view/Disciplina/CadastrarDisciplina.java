@@ -1,12 +1,15 @@
-package view.Disciplina;
+package Disciplina;
 
-import view.Estudantes.ListarEstudante;
-import view.Financas.Financas;
-import view.Formacao.ListarFormacao;
-import view.PaginaInicial.TelaPaginaInicia;
+import Estudantes.ListarEstudante;
+import Financas.Financas;
+import Formacao.ListarFormacao;
+import PaginaInicial.TelaPaginaInicia;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import controller.ItemController;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,6 +54,26 @@ public CadastrarDisciplina() {
     g5 = new GridBagConstraints();
     g6 = new GridBagConstraints();
     botaoCadastrar = new JButton("Cadastra");  botaoCadastrar.setPreferredSize(new Dimension(100,50));
+    botaoCadastrar.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean resposta;
+        try{
+            ItemController disciplinaCriar = new ItemController();
+            resposta = disciplinaCriar.cadastrar(nomeDisciplina.getText(), Float.parseFloat(precoDisciplina.getText()), "10", "disciplina");    
+
+            if(resposta){
+                JOptionPane.showMessageDialog(null, "Realizado Com Sucesso!","Confirm",JOptionPane.OK_OPTION);
+                dispose();
+                ListarDisciplina ld = new ListarDisciplina();
+            } else{
+                JOptionPane.showMessageDialog(null, "Os Campos não foram preenchidos Correctamente!");
+            }
+        }catch(Exception L){
+            JOptionPane.showMessageDialog(null, "Erro: "+L.getMessage());
+        }
+    }
+   });
     logo = new ImageIcon("Img/logo.png");
     labelLogo = new JLabel(logo);
     nomeDisciplina = new  JTextField(); nomeDisciplina.setPreferredSize(new Dimension(700,50));

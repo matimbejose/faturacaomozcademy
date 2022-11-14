@@ -1,11 +1,11 @@
-package view.Estudantes;
+package Estudantes;
 
 import model.DataAccessObject.EstudanteDAO;
 import model.ValueObject.Estudante_Da_Tabela;
-import view.Disciplina.ListarDisciplina;
-import view.Financas.Financas;
-import view.Formacao.ListarFormacao;
-import view.PaginaInicial.TelaPaginaInicia;
+import Disciplina.ListarDisciplina;
+import Financas.Financas;
+import Formacao.ListarFormacao;
+import PaginaInicial.TelaPaginaInicia;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
