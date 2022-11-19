@@ -6,10 +6,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CadastrarEstudante extends JFrame {
+public class CadastrarEstudante extends JPanel {
 
-    private JButton paginaInicial,estudantes,disciplinas,formacao,financas, bCadastrarEst,botaoComTi;
-    private JLabel labelLogo;
+    private JButton  bCadastrarEst,botaoComTi;
     private JTextField txtNome,txtDtInscricao;
     private  JRadioButton DisciplinaR,FormacaoR;
     private JCheckBox chExcel,chWord, chPPoint,cCode,radNiv5,radNiv6,radNiv7,radNiv8,radNiv9,radNiv10,radNiv11,radNiv12,DisciplinaMat,DisciplinaFis,DisciplinaQ,DisciplinaB;
@@ -19,43 +18,15 @@ public class CadastrarEstudante extends JFrame {
     private ButtonGroup  GrupoDeNivel;
 
     public CadastrarEstudante(){
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setTitle("Estudantes");
-        add(BorderLayout.NORTH, Logo());
         add(BorderLayout.CENTER , conteuddo());
-        add(BorderLayout.WEST, Menu());
-        pack();
         setVisible(true);
     }
 
-    public JPanel Menu() {
-        inicializarComponents();
-        JPanel aux = new JPanel();
-        aux.setLayout(new BoxLayout(aux, BoxLayout.PAGE_AXIS));
-        aux.add(Box.createRigidArea(new Dimension(10,10)));
-        aux.add(paginaInicial);
-        aux.add(Box.createRigidArea(new Dimension(10,10)));
-        aux.add(estudantes);
-        aux.add(Box.createRigidArea(new Dimension(10,10)));
-        aux.add(disciplinas);
-        aux.add(Box.createRigidArea(new Dimension(10,10)));
-        aux.add(formacao);
-        aux.add(Box.createRigidArea(new Dimension(10,10)));
-        aux.add(financas);
-        aux.setPreferredSize(new Dimension(150,600));
-        aux.setBackground(corFundo);
-        return aux;
-    }
-
+  
 
 
     public void inicializarComponents() {
-        paginaInicial = new JButton("Pagina Inicial");paginaInicial.setBackground(Color.WHITE);paginaInicial.setForeground(Color.BLACK);
-        estudantes = new   JButton("Estudantes    ");estudantes.setBackground(Color.WHITE);estudantes.setForeground(Color.BLACK);
-        disciplinas =  new JButton("Disciplinas     ");disciplinas.setBackground(Color.WHITE);disciplinas.setForeground(Color.BLACK);
-        formacao =  new JButton("   Formacao    ");formacao.setBackground(Color.WHITE);formacao.setForeground(Color.BLACK);
-        financas =   new JButton("  Finanacas    ");financas.setBackground(Color.WHITE);financas.setForeground(Color.BLACK);
         botaoComTi = new JButton("Formulario Para Cadastro de Estudante  ");
         logo = new ImageIcon();
         corFundo = new Color(30, 30, 30);
@@ -86,16 +57,6 @@ public class CadastrarEstudante extends JFrame {
         DisciplinaFis =  new JCheckBox("Fisica");DisciplinaFis.setBackground(Color.WHITE); 
         DisciplinaQ =  new JCheckBox("Quimica");DisciplinaQ.setBackground(Color.WHITE); 
         DisciplinaB =  new JCheckBox("Biologia");DisciplinaB.setBackground(Color.WHITE); 
-    }
-
-    public JPanel Logo() {
-        inicializarComponents();
-        logo = new ImageIcon("Img/logo.png");
-        JPanel aux = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        aux.add(labelLogo = new JLabel(logo));
-        aux.setPreferredSize(new Dimension(1500, 130));
-        aux.setBackground(corFundo);
-        return aux;
     }
 
 
@@ -241,10 +202,6 @@ public class CadastrarEstudante extends JFrame {
         aux.add(radNiv12);
         aux.setBackground(Color.WHITE);
         return aux;
-    }
-
-    public static void main(String[] args) {
-        new CadastrarEstudante();
     }
 
 }

@@ -2,8 +2,7 @@ package Login;
 
 import model.DataAccessObject.UsuarioDAO;
 import model.ValueObject.Usuario;
-import PaginaInicial.TelaPaginaInicia;
-
+import app.Main;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -66,7 +65,8 @@ public class TelaLogin extends JFrame implements ActionListener {
        try{
            String nomeTela, senhaTela;
            nomeTela = txtNome.getText();
-           senhaTela = String.valueOf(pwSenha.getPassword());
+
+            senhaTela = String.valueOf(pwSenha.getPassword());
 
            Usuario objUsuValueObj = new Usuario();
            objUsuValueObj.setNome(nomeTela);
@@ -77,7 +77,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 
            if(rsusuarioDao.next()){
                //chgamar tela que eu quero abrir
-               TelaPaginaInicia pi = new TelaPaginaInicia();
+               Main pi = new Main();
                dispose();
                JOptionPane.showMessageDialog(null , "Logado com sucesso !");
 

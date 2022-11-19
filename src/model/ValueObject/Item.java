@@ -4,15 +4,13 @@ public class Item {
     private int idItem;
     private String nome;
     private float preco;
-    private String nivel;
     private String tipo;
 
     public Item(){}
 
-    public Item( String nome, float preco, String tipo, String nivel) {
+    public Item( String nome, float preco, String tipo) {
         this.nome = nome;
         this.preco = preco;
-        this.nivel = nivel;
         this.tipo = tipo;
 
     }
@@ -49,11 +47,5 @@ public class Item {
         this.preco = preco;
     }
 
-    public String getNivel() {
-        return nivel;
-    }
 
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
-    }
 }

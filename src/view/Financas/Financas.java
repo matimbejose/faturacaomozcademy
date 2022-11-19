@@ -6,10 +6,6 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
-import Disciplina.ListarDisciplina;
-import Formacao.ListarFormacao;
-import PaginaInicial.TelaPaginaInicia;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -17,10 +13,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Financas extends JFrame implements ActionListener{
-  private JButton paginaInicial,estudantes,disciplinas,formacao,financas,botaoEstudanteRegular,botaoEstudanteNaoRegular,botaoDisciplina, botaoFormacacao,botaoComTi;
-  private JLabel labelLogo;
-  private ImageIcon logo;
+public class Financas extends JPanel {
+  private JButton botaoEstudanteRegular,botaoEstudanteNaoRegular,botaoDisciplina, botaoFormacacao,botaoComTi;
   private Color corFundo;
   private GridBagConstraints  g1,g2, g3, g4, g5,g6;
   private JTextField nomeDisciplina,precoDisciplina;
@@ -28,27 +22,13 @@ public class Financas extends JFrame implements ActionListener{
 
 
   public Financas() {
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
-    add(BorderLayout.NORTH, Logo());
     add(BorderLayout.CENTER , conteuddo());
-    add(BorderLayout.WEST, Menu());
-    pack();
     setVisible(true);
   }
 
 
   public void inicializarComponents() {
-    paginaInicial = new JButton("Pagina Inicial");paginaInicial.setBackground(Color.WHITE);paginaInicial.setForeground(Color.BLACK);
-    estudantes = new   JButton("Estudantes    ");estudantes.setBackground(Color.WHITE);estudantes.setForeground(Color.BLACK);
-    disciplinas =  new JButton("Disciplinas     ");disciplinas.setBackground(Color.WHITE);disciplinas.setForeground(Color.BLACK);
-    formacao =  new JButton("   Formacao    ");formacao.setBackground(Color.WHITE);formacao.setForeground(Color.BLACK);
-    financas =   new JButton("  Finanacas    ");financas.setBackground(Color.WHITE);financas.setForeground(Color.red);
-        paginaInicial.addActionListener(this);
-        disciplinas.addActionListener(this);
-        formacao.addActionListener(this);
-        financas.addActionListener(this);
-        estudantes.addActionListener(this);
     botaoComTi = new JButton("Finanças           ");
     corFundo = new Color(30, 30, 30);
     g1 = new GridBagConstraints();
@@ -61,52 +41,19 @@ public class Financas extends JFrame implements ActionListener{
     iconeEstNR = new ImageIcon("Img/gathering.png");
     iconeDisc = new ImageIcon("Img/pilha-de-livros.png");
     iconeFormIcon = new ImageIcon("Img/graduated.png");
-    logo = new ImageIcon("Img/logo.png");
-    labelLogo = new JLabel(logo);
     nomeDisciplina = new  JTextField(); nomeDisciplina.setPreferredSize(new Dimension(700,50));
     precoDisciplina =  new JTextField(); precoDisciplina.setPreferredSize(new Dimension(700,50  ));
     botaoEstudanteRegular = new JButton("Estudantes Regular",iconeEstR);botaoEstudanteRegular.setPreferredSize(new Dimension(250,120));
       botaoEstudanteRegular.setBackground(Color.WHITE);botaoEstudanteRegular.setBorder(new LineBorder(Color.BLACK));
     botaoEstudanteNaoRegular = new JButton("Estudantes NRegular ",iconeEstNR);
       botaoEstudanteNaoRegular.setBackground(Color.WHITE);botaoEstudanteNaoRegular.setBorder(new LineBorder(Color.BLACK));
-
     botaoDisciplina = new JButton("Disciplinas ",iconeDisc);
        botaoDisciplina.setBackground(Color.WHITE);botaoDisciplina.setBorder(new LineBorder(Color.BLACK));
-
     botaoFormacacao = new JButton("Formação ",iconeFormIcon);
       botaoFormacacao.setBackground(Color.WHITE); botaoFormacacao.setBorder(new LineBorder(Color.BLACK));
 
   }
-
-  public JPanel Logo() {
-    inicializarComponents();
-    JPanel aux = new JPanel(new FlowLayout(FlowLayout.LEFT));
-    aux.add(labelLogo);
-    aux.setPreferredSize(new Dimension(1500, 130));
-    aux.setBackground(corFundo);
-    return aux;
-  }
-
-
-  public JPanel Menu() {
-    inicializarComponents();
-    JPanel aux = new JPanel();
-    aux.setLayout(new BoxLayout(aux, BoxLayout.PAGE_AXIS));
-    aux.add(Box.createRigidArea(new Dimension(10,10)));
-    aux.add(paginaInicial);
-    aux.add(Box.createRigidArea(new Dimension(10,10)));
-    aux.add(estudantes);
-    aux.add(Box.createRigidArea(new Dimension(10,10)));
-    aux.add(disciplinas);
-    aux.add(Box.createRigidArea(new Dimension(10,10))) ;
-    aux.add(formacao);
-    aux.add(Box.createRigidArea(new Dimension(10,10)));
-    aux.add(financas);
-    aux.setPreferredSize(new Dimension(150,600));
-    aux.setBackground(corFundo);
-    return aux;
-  }
-
+  
   public JPanel  criargrafico(){
     JPanel painel = new JPanel();
     DefaultCategoryDataset  barChartData = new DefaultCategoryDataset();
@@ -215,33 +162,6 @@ public class Financas extends JFrame implements ActionListener{
     return flow;
   }
 
-
-  public static void main(String[] args) {
-    new Financas();
-  }
-
-
-  public void actionPerformed(ActionEvent e) {
-    if(e.getSource()==disciplinas){
-      this.dispose();
-      ListarDisciplina disciplina = new ListarDisciplina();
-    }else
-    if(e.getSource()==estudantes){
-
-    }else
-    if(e.getSource()==financas){
-      this.dispose();
-      Financas financas = new Financas();
-    }else
-    if(e.getSource()==formacao){
-      this.dispose();
-      ListarFormacao formacao = new ListarFormacao();
-    }else
-    if(e.getSource()==paginaInicial){
-      this.dispose();
-      TelaPaginaInicia pgI = new TelaPaginaInicia();
-    }
-  }
 
 }
 

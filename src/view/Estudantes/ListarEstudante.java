@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ListarEstudante extends JFrame implements ActionListener {
+public class ListarEstudante extends JPanel   {
 
     private JButton paginaInicial,estudantes,disciplinas,formacao,financas, bCadastrarEst;
     private JLabel labelLogo;
@@ -33,14 +33,8 @@ public class ListarEstudante extends JFrame implements ActionListener {
 
 
     public ListarEstudante(){
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setTitle("Estudantes");
-        add(BorderLayout.NORTH, Logo());
         add(BorderLayout.CENTER , conteuddo());
-        add(BorderLayout.WEST, Menu());
-
-        pack();
         setVisible(true);
         listarValore();
     }
@@ -77,17 +71,6 @@ public class ListarEstudante extends JFrame implements ActionListener {
         });
 
 
-        paginaInicial = new JButton("Pagina Inicial");paginaInicial.setBackground(Color.WHITE);paginaInicial.setForeground(Color.BLACK);
-        estudantes = new   JButton("Estudantes    ");estudantes.setBackground(Color.WHITE);estudantes.setForeground(Color.red);
-        disciplinas =  new JButton("Disciplinas     ");disciplinas.setBackground(Color.WHITE);disciplinas.setForeground(Color.BLACK);
-        formacao =  new JButton("   Formacao    ");formacao.setBackground(Color.WHITE);formacao.setForeground(Color.BLACK);
-        financas =   new JButton("  Finanacas    ");financas.setBackground(Color.WHITE);financas.setForeground(Color.BLACK);
-                paginaInicial.addActionListener(this);
-                disciplinas.addActionListener(this);
-                formacao.addActionListener(this);
-                financas.addActionListener(this);
-                estudantes.addActionListener(this);
-
         botaoComTi = new JButton();
         bCadastrarEst= new JButton("Cadastrar Estudante",imgAddEst);
         bCadastrarEst.setBackground(Color.WHITE);
@@ -97,7 +80,6 @@ public class ListarEstudante extends JFrame implements ActionListener {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         CadastrarEstudante cd = new CadastrarEstudante();
-                        dispose();
                     }
                 });
 
@@ -212,31 +194,5 @@ public class ListarEstudante extends JFrame implements ActionListener {
 //}
 
 
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==disciplinas){
-            this.dispose();
-            ListarDisciplina disciplina = new ListarDisciplina();
-        }else
-        if(e.getSource()==estudantes){
-
-        }else
-        if(e.getSource()==financas){
-            this.dispose();
-            Financas financas = new Financas();
-        }else
-        if(e.getSource()==formacao){
-            this.dispose();
-            ListarFormacao formacao = new ListarFormacao();
-        }else
-        if(e.getSource()==paginaInicial){
-            this.dispose();
-            TelaPaginaInicia pgI = new TelaPaginaInicia();
-        }
-    }
-
-
-    public static void main(String[] args) {
-        new ListarEstudante();
-    }
 }
 
