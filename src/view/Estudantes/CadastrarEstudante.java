@@ -1,35 +1,27 @@
 package Estudantes;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
+
+import controller.EstudanteController;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CadastrarEstudante extends JPanel {
 
-    private JButton  bCadastrarEst,botaoComTi;
-    private JTextField txtNome,txtDtInscricao;
-    private  JRadioButton DisciplinaR,FormacaoR;
-    private JCheckBox chExcel,chWord, chPPoint,cCode,radNiv5,radNiv6,radNiv7,radNiv8,radNiv9,radNiv10,radNiv11,radNiv12,DisciplinaMat,DisciplinaFis,DisciplinaQ,DisciplinaB;
-    private ImageIcon logo;
-    private Color corFundo;
-    private GridBagConstraints  g1,g2, g3, g4, g5,g6,g7,g8,g9, g10;
-    private ButtonGroup  GrupoDeNivel;
+public class CadastrarEstudante extends JFrame {
+    private JButton bCadastrarEst;
+    private JTextField txtNome, txtContato, txtValorPago, txtNivel, txtItem1, txtItem2, txtItem3,txtHora;    
+    private GridBagConstraints g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g91, g92, g11, g93, g94, g20, g21;
 
-    public CadastrarEstudante(){
+    public CadastrarEstudante() {
         setLayout(new BorderLayout());
-        add(BorderLayout.CENTER , conteuddo());
+        add(BorderLayout.CENTER, conteuddo());
+        pack();
         setVisible(true);
     }
 
-  
-
-
     public void inicializarComponents() {
-        botaoComTi = new JButton("Formulario Para Cadastro de Estudante  ");
-        logo = new ImageIcon();
-        corFundo = new Color(30, 30, 30);
         g1 = new GridBagConstraints();
         g2 = new GridBagConstraints();
         g3 = new GridBagConstraints();
@@ -39,171 +31,170 @@ public class CadastrarEstudante extends JPanel {
         g7 = new GridBagConstraints();
         g8 = new GridBagConstraints();
         g9 = new GridBagConstraints();
+        g91 = new GridBagConstraints();
+        g92 = new GridBagConstraints();
         g10 = new GridBagConstraints();
-        txtNome = new JTextField();txtNome.setPreferredSize(new Dimension(150,30));
-        txtDtInscricao = new JTextField();txtDtInscricao.setPreferredSize(new Dimension(150,30));
-        bCadastrarEst = new JButton("Cadastrar");FormacaoR = new JRadioButton("Formacao");
-        DisciplinaR = new JRadioButton();DisciplinaR.setText("Disciplina");
-        chExcel = new JCheckBox("Excel"); chExcel.setBackground(Color.WHITE);
-        chWord = new JCheckBox("Excel"); chWord.setBackground(Color.WHITE);
-        chPPoint = new JCheckBox("Excel"); chPPoint.setBackground(Color.WHITE);
-        cCode = new JCheckBox("Code"); cCode.setBackground(Color.WHITE);
-        GrupoDeNivel = new ButtonGroup();
-        radNiv5 = new JCheckBox("nivel 5");radNiv5.setBackground(Color.WHITE);radNiv6 = new JCheckBox("nivel 6");radNiv6.setBackground(Color.WHITE);radNiv7 = new JCheckBox("nivel 7");radNiv7.setBackground(Color.WHITE);radNiv8 = new JCheckBox("nivel 8");radNiv8.setBackground(Color.WHITE);
-        radNiv9 = new JCheckBox("nivel 9"); radNiv9.setBackground(Color.WHITE); radNiv10 = new JCheckBox("nivel 10"); radNiv10.setBackground(Color.WHITE);radNiv11 = new JCheckBox("nivel 11");radNiv11.setBackground(Color.WHITE);radNiv12 = new JCheckBox("nivel 12");radNiv12.setBackground(Color.WHITE);
-        GrupoDeNivel.add(radNiv5);GrupoDeNivel.add(radNiv6);GrupoDeNivel.add(radNiv7);GrupoDeNivel.add(radNiv8);GrupoDeNivel.add(radNiv9);GrupoDeNivel.add(radNiv10);GrupoDeNivel.add(radNiv11);GrupoDeNivel.add(radNiv12);
-        bCadastrarEst = new JButton("Cadastrar");bCadastrarEst.setBackground(corFundo);bCadastrarEst.setForeground(Color.WHITE);
-        DisciplinaMat =  new JCheckBox("Matematica");DisciplinaMat.setBackground(Color.WHITE); 
-        DisciplinaFis =  new JCheckBox("Fisica");DisciplinaFis.setBackground(Color.WHITE); 
-        DisciplinaQ =  new JCheckBox("Quimica");DisciplinaQ.setBackground(Color.WHITE); 
-        DisciplinaB =  new JCheckBox("Biologia");DisciplinaB.setBackground(Color.WHITE); 
+        g93 = new GridBagConstraints();
+        g94 = new GridBagConstraints();
+        g11 = new GridBagConstraints();
+        g20 = new GridBagConstraints();
+        g21 = new GridBagConstraints();
+        txtNome = new JTextField();
+        txtNome.setPreferredSize(new Dimension(150, 30));
+        txtContato = new JTextField();
+        txtContato.setPreferredSize(new Dimension(150, 30));
+        txtItem1 = new JTextField();
+        txtItem1.setPreferredSize(new Dimension(150, 30));
+        txtItem2 = new JTextField();
+        txtItem2.setPreferredSize(new Dimension(150, 30));
+        txtItem3 = new JTextField();
+        txtItem3.setPreferredSize(new Dimension(150, 30));
+        txtValorPago = new JTextField();
+        txtValorPago.setPreferredSize(new Dimension(150, 30));
+        txtNivel = new JTextField();
+        txtNivel.setPreferredSize(new Dimension(50, 30));
+        txtHora = new JTextField();
+        txtHora.setPreferredSize(new Dimension(50, 30));
+        bCadastrarEst = new JButton("Cadastrar Estudante", new ImageIcon("Img/salvar.png"));
+        bCadastrarEst.setBackground(Color.WHITE);
+
     }
 
 
-
-  
     private JPanel conteuddo() {
         inicializarComponents();
-        JPanel flow = new JPanel(new FlowLayout(FlowLayout.LEFT));
-
-        JPanel conteudoPrincipal = new JPanel(new GridBagLayout());
-        conteudoPrincipal.setBorder(new EmptyBorder(30,3, 4, 5));        
-        botaoComTi.setHorizontalAlignment(SwingConstants.LEFT);
-        botaoComTi.setEnabled(false);
+        JPanel flow = new JPanel(new GridBagLayout());
+        flow.setBackground(Color.WHITE);
+        flow.setBorder(new EmptyBorder(30, 3, 4, 5));
 
         g1.gridx = 0;
         g1.gridy = 0;
-        g1.ipadx = 900;
-
+        g1.anchor = GridBagConstraints.WEST;
 
         g2.gridx = 0;
         g2.gridy = 1;
         g2.anchor = GridBagConstraints.WEST;
-        g2.insets = new Insets(10, 1, 1, 1);
+        g2.insets = new Insets(1, 1, 10, 1);
 
-        g3.gridx = 0;
-        g3.gridy = 2;
-        g3.anchor = GridBagConstraints.WEST;
-        g3.insets = new Insets(10, 1, 1, 1);
+        g3.gridx = 1;
+        g3.gridy = 0;
+        g3.anchor = GridBagConstraints.CENTER;
+        g3.insets = new Insets(1, 1, 10, 1);
 
-        
-        g4.gridx = 0;
+        g4.gridx = 1;
         g4.gridy = 1;
-        g4.anchor = GridBagConstraints.NORTHEAST;
-        g4.insets = new Insets(10, 1, 1, 1);
+        g4.anchor = GridBagConstraints.CENTER;
+        g4.insets = new Insets(1, 1, 10, 1);
 
         g5.gridx = 0;
         g5.gridy = 2;
-        g5.anchor = GridBagConstraints.NORTHEAST;
-        g5.insets = new Insets(10, 1, 1, 1);
+        g5.anchor = GridBagConstraints.WEST;
+        g5.insets = new Insets(1, 1, 10, 1);
 
-
-        
         g6.gridx = 0;
         g6.gridy = 3;
         g6.anchor = GridBagConstraints.WEST;
-        g6.insets = new Insets(10, 1, 1, 1);
+        g6.insets = new Insets(1, 1, 10, 1);
 
-
-                
         g7.gridx = 0;
         g7.gridy = 4;
         g7.anchor = GridBagConstraints.WEST;
-        g7.insets = new Insets(1, 1, 1, 1);
+        g7.insets = new Insets(1, 1, 10, 1);
 
         g8.gridx = 0;
-        g8.gridy = 3;
-        g8.anchor = GridBagConstraints.CENTER;
-        g8.insets = new Insets(10, 1, 1, 1);
+        g8.gridy = 5;
+        g8.anchor = GridBagConstraints.WEST;
+        g8.insets = new Insets(1, 1, 10, 1);
 
         g9.gridx = 0;
-        g9.gridy = 4;
-        g9.anchor = GridBagConstraints.CENTER;
-        g9.insets = new Insets(1, 1, 1, 1);
+        g9.gridy = 6;
+        g9.anchor = GridBagConstraints.WEST;
+        g9.insets = new Insets(1, 1, 10, 1);
 
         g10.gridx = 0;
         g10.gridy = 7;
-        g10.anchor = GridBagConstraints.SOUTHEAST;
-        g10.insets = new Insets(200, 1, 1, 1);
+        g10.anchor = GridBagConstraints.WEST;
+        g10.insets = new Insets(1, 1, 1, 1);
+
+        g91.gridx = 0;
+        g91.gridy = 9;
+        g91.anchor = GridBagConstraints.WEST;
+        g91.insets = new Insets(1, 1, 10, 1);
+
+        g92.gridx = 0;
+        g92.gridy = 10;
+        g92.anchor = GridBagConstraints.WEST;
+        g92.insets = new Insets(1, 1, 10, 1);
+
+        g93.gridx = 0;
+        g93.gridy = 11;
+        g93.anchor = GridBagConstraints.WEST;
+        g93.insets = new Insets(1, 1, 10, 1);
+
+        g94.gridx = 0;
+        g94.gridy = 12;
+        g94.anchor = GridBagConstraints.WEST;
+        g94.insets = new Insets(1, 1, 10, 1);
+
+        g20.gridx = 1;
+        g20.gridy = 2;
+        g20.anchor = GridBagConstraints.CENTER;
+        g20.insets = new Insets(10, 1, 1, 1);
+
+        g21.gridx = 1;
+        g21.gridy = 3;
+        g21.anchor = GridBagConstraints.CENTER;
+        g21.insets = new Insets(1, 1, 10, 1);
+
+        g11.gridx = 0;
+        g11.gridy = 15;
+        g11.anchor = GridBagConstraints.WEST;
+        g11.insets = new Insets(10, 1, 10, 1);
+
+        flow.add(new JLabel("Nome do Estudante "), g1);
+        flow.add(txtNome, g2);
+        flow.add(new JLabel("contacto "), g3);
+        flow.add(txtContato, g4);
+        flow.add(new JLabel("Valor Pago"), g5);
+        flow.add(txtValorPago, g6);
+        flow.add(new JLabel("Nivel"), g7);
+        flow.add(txtNivel, g8);
+        flow.add(new JLabel("Intem 1"), g9);
+        flow.add(txtItem1, g10);
+        flow.add(new JLabel("Intem 2"), g91);
+        flow.add(txtItem2, g92);
+        flow.add(new JLabel("Intem 3"), g93);
+        flow.add(txtItem3, g94);
+        flow.add(new JLabel("Hora"), g20);
+        flow.add(txtHora, g21);
+        flow.add(bCadastrarEst, g11);
+
+        bCadastrarEst.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                float valorPg = Float.parseFloat(txtValorPago.getText());
+                Boolean resposta;
 
 
+               resposta = new EstudanteController().cadastrarEstudante(txtNome.getText(), valorPg, txtContato.getText(), txtNivel.getText(), txtItem1.getText(), txtItem2.getText(), txtItem3.getText(), txtHora.getText());
+
+               if(resposta) {
+                JOptionPane.showMessageDialog(null, "cadastrado com sucesso");
+                dispose();
+               } else {
+                JOptionPane.showMessageDialog(null, "erro no cadastro");
+               }
 
 
+            }
+        });
 
-        
-        conteudoPrincipal.add(botaoComTi,g1); 
-        conteudoPrincipal.add(new JLabel("Nome"),g2);
-        conteudoPrincipal.add(txtNome,g3);
-        conteudoPrincipal.add(new JLabel("Data de Inscricao"), g4);
-        conteudoPrincipal.add(txtDtInscricao,g5);
-        FormacaoR.setBackground(Color.WHITE);
-        conteudoPrincipal.add(FormacaoR,g6);
-
-     
-        conteudoPrincipal.add(Formacoes(),g7);
-        DisciplinaR.setBackground(Color.white);
-        conteudoPrincipal.add(DisciplinaR,g8);
-        conteudoPrincipal.add(painelParaNivel(),g9);
-        conteudoPrincipal.add(bCadastrarEst,g10);
-        conteudoPrincipal.setBackground(Color.white);
-        flow.add(conteudoPrincipal);
-        flow.setBackground(Color.WHITE);
         return flow;
     }
 
+ 
 
-    private JPanel Formacoes() {
-        JPanel aux = new JPanel(new GridLayout(3,1,1,1));
-        aux.add(chPPoint);
-        aux.add(chWord);
-        aux.add(chExcel);
-        aux.setBackground(Color.WHITE);
-        return aux;
+    public static void main(String[] args) {
+        new CadastrarEstudante();
     }
-
-    private   JFrame MostraDisciplina() {
-        JFrame aux = new JFrame();
-        aux.setUndecorated(true);
-
-        JPanel agrupaCharis = new JPanel(new GridLayout(4,1,4,4));
-
-        agrupaCharis.add(DisciplinaMat);
-        agrupaCharis.add(DisciplinaFis);
-        agrupaCharis.add(DisciplinaQ);
-        agrupaCharis.add(DisciplinaB);
-
-        agrupaCharis.setBackground(Color.white);
-
-
-        aux.setBackground(Color.WHITE);
-        aux.add(agrupaCharis);
-        aux.pack();
-        aux.setVisible(true);
-        aux.setLocation(805,300);
-        return aux;
-    }
-
-
-
-
-    private JPanel painelParaNivel() {
-
-        JPanel aux = new JPanel();
-        aux.setLayout(new BoxLayout(aux, BoxLayout.PAGE_AXIS));
-        aux.add(radNiv10);
-        radNiv10.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MostraDisciplina();
-            }
-
-        });
-        aux.add(radNiv11);
-        aux.add(radNiv12);
-        aux.setBackground(Color.WHITE);
-        return aux;
-    }
-
 }
-
-

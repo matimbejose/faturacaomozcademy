@@ -3,7 +3,7 @@ package Disciplina;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import controller.ItemController;
+import controller.EstudanteController;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -38,9 +38,12 @@ public class CadastrarDisciplina extends JFrame {
           float preco = Float.parseFloat(precoDisciplina.getText());
           boolean resposta;
 
-          ItemController ic = new ItemController();
+          EstudanteController ic = new EstudanteController();
 
-          resposta = ic.cadastrarDisciplina(nome, preco);
+          resposta = true;
+
+          System.out.println(nome);
+          System.out.print(preco);
       
           if (resposta) {
             dispose();

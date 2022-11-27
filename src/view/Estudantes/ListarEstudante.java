@@ -2,10 +2,6 @@ package Estudantes;
 
 import model.DataAccessObject.EstudanteDAO;
 import model.ValueObject.Estudante_Da_Tabela;
-import Disciplina.ListarDisciplina;
-import Financas.Financas;
-import Formacao.ListarFormacao;
-import PaginaInicial.TelaPaginaInicia;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -16,13 +12,11 @@ import java.util.ArrayList;
 
 public class ListarEstudante extends JPanel   {
 
-    private JButton paginaInicial,estudantes,disciplinas,formacao,financas, bCadastrarEst;
-    private JLabel labelLogo;
-    private JButton botaoComTi, bGerarRelatorio,  bRefresh;
+    private JButton  bCadastrarEst;
+    private JButton bGerarRelatorio,  bRefresh;
     private JTable tblEstudantes;
     private JScrollPane scrEstudantes;
-    private ImageIcon logo, imgAddEst;
-    private Color corFundo;
+    private ImageIcon  imgAddEst;
     JButton getbRefresh;
 
     private void listarValore(){
@@ -71,20 +65,17 @@ public class ListarEstudante extends JPanel   {
         });
 
 
-        botaoComTi = new JButton();
+        imgAddEst = new ImageIcon("Img/addpeople.png");
         bCadastrarEst= new JButton("Cadastrar Estudante",imgAddEst);
         bCadastrarEst.setBackground(Color.WHITE);
-        logo = new ImageIcon();
-        imgAddEst = new ImageIcon("Img/addpeople.png");
                 bCadastrarEst.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         CadastrarEstudante cd = new CadastrarEstudante();
+                        System.out.print("ele entrou ");
                     }
                 });
 
-        labelLogo = new JLabel();
-        corFundo = new Color(30, 30, 30);
 
         tblEstudantes = new JTable();
         Object [] columns ={"idEstudante","nome","nivel","tipo","status","dt_inscricao"};
@@ -102,16 +93,6 @@ public class ListarEstudante extends JPanel   {
 
 
 
-    public JPanel Logo() {
-        inicializarComponents();
-        logo = new ImageIcon("Img/logo.png");
-        JPanel aux = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        aux.add(labelLogo = new JLabel(logo));
-        aux.setPreferredSize(new Dimension(1500, 130));
-        aux.setBackground(corFundo);
-
-        return aux;
-    }
 
 
     private JPanel conteuddo() {
@@ -151,24 +132,6 @@ public class ListarEstudante extends JPanel   {
         return painSup;
     }
 
-    public JPanel Menu() {
-        inicializarComponents();
-        JPanel aux = new JPanel();
-        aux.setLayout(new BoxLayout(aux, BoxLayout.PAGE_AXIS));
-        aux.add(Box.createRigidArea(new Dimension(10,10)));
-        aux.add(paginaInicial);
-        aux.add(Box.createRigidArea(new Dimension(10,10)));
-        aux.add(estudantes);
-        aux.add(Box.createRigidArea(new Dimension(10,10)));
-        aux.add(disciplinas);
-        aux.add(Box.createRigidArea(new Dimension(10,10)));
-        aux.add(formacao);
-        aux.add(Box.createRigidArea(new Dimension(10,10)));
-        aux.add(financas);
-        aux.setPreferredSize(new Dimension(130,750));
-        aux.setBackground(corFundo);
-        return aux;
-    }
 
 //    public void lista() {
 //        EstudanteDAO objEstudanteDao = new EstudanteDAO();

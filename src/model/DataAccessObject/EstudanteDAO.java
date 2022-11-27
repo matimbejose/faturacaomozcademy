@@ -2,6 +2,7 @@ package model.DataAccessObject;
 
 import model.ValueObject.*;
 
+import javax.annotation.processing.SupportedOptions;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
@@ -81,6 +82,29 @@ return resultadosEstudantes;
             JOptionPane.showMessageDialog(null, "UsuarioDAO"+ex);
             return null;
         }
+    }
+
+
+    public boolean cadasTrarEstudante(String sql){
+        conexao = new Conectar_a_BD().conectaBD();
+        boolean resp = false;
+
+        try{
+            PreparedStatement pstm = conexao.prepareStatement(sql);
+            int i = pstm.executeUpdate();
+            if(i==1)
+            resp=true;
+
+            return resp;
+        }catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "EstudanteDAO : "+ex);
+            return resp;
+        }
+
+
+
+
+     
     }
 
 }
