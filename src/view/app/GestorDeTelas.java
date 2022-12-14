@@ -7,7 +7,6 @@ import Estudantes.ListarEstudante;
 import Financas.Financas;
 import Formacao.ListarFormacao;
 import PaginaInicial.TelaPaginaInicia;
-
 import java.awt.*;
 
 public class GestorDeTelas  extends JPanel {

@@ -2,6 +2,9 @@ package Formacao;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import controller.ItemController;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +18,7 @@ private JTextField nomeDisciplina,precoDisciplina;
 
 public CadastrarFormacao() {
     setLayout(new BorderLayout());
+    setIconImage((new ImageIcon("Img/logo.png")).getImage());
     add(BorderLayout.CENTER , conteuddo());
     setVisible(true);
     pack();
@@ -22,17 +26,38 @@ public CadastrarFormacao() {
 
 
   public void inicializarComponents() {
+    nomeDisciplina = new  JTextField(); nomeDisciplina.setPreferredSize(new Dimension(700,50));
+    precoDisciplina =  new JTextField(); precoDisciplina.setPreferredSize(new Dimension(700,50  ));
     g2 = new GridBagConstraints();g3 = new GridBagConstraints();g4 = new GridBagConstraints();g5 = new GridBagConstraints();g6 = new GridBagConstraints();
-    botaoCadastrar = new JButton("Cadastrar");botaoCadastrar.setPreferredSize(new Dimension(100,50));
+    botaoCadastrar = new JButton("Cadastrar Formacao", new ImageIcon("Img/salvar.png"));botaoCadastrar.setPreferredSize(new Dimension(150,50));
     botaoCadastrar.setBackground(Color.white);
     botaoCadastrar.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-         JOptionPane.showMessageDialog(null, "matimbe");
+        
+        try {
+          String nome = nomeDisciplina.getText();
+          float preco = Float.parseFloat(precoDisciplina.getText());
+          boolean resposta;
+
+          ItemController ic = new ItemController();
+
+
+          resposta = ic.ValidarItem(nome, "formacao",preco);
+          if (resposta) {
+            dispose();
+            JOptionPane.showMessageDialog(null, "Realizado Com Sucesso!", "Confirm", JOptionPane.OK_OPTION);
+
+          } else {
+            JOptionPane.showMessageDialog(null, "Os Campos não foram preenchidos Correctamente!");
+          }
+
+        } catch (Exception l) {
+          System.out.println(l.getMessage());
+        }
       }
   });
-    nomeDisciplina = new  JTextField(); nomeDisciplina.setPreferredSize(new Dimension(700,50));
-    precoDisciplina =  new JTextField(); precoDisciplina.setPreferredSize(new Dimension(700,50  ));
+   
   }
  
 

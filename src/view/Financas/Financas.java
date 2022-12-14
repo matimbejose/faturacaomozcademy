@@ -53,27 +53,10 @@ public class Financas extends JPanel {
       botaoFormacacao.setBackground(Color.WHITE); botaoFormacacao.setBorder(new LineBorder(Color.BLACK));
 
   }
+
+
+
   
-  public JPanel  criargrafico(){
-    JPanel painel = new JPanel();
-    DefaultCategoryDataset  barChartData = new DefaultCategoryDataset();
-    barChartData.setValue(200, "matimbe", "Novembro");
-    barChartData.setValue(300, "jose", "Novembro");
-
-
-    JFreeChart barChart = ChartFactory.createBarChart("Retabilidade","Mês", "Valores Pagos",barChartData, PlotOrientation.VERTICAL, false, true, false);
-    CategoryPlot  barchrt  = barChart.getCategoryPlot();
-    barchrt.setRangeGridlinePaint(Color.ORANGE);
-
-
-
-    // ChartPanel barPanel = new  ChartPanel(barChart);
-    painel.setBackground(Color.white);
-    // painel.add(barPanel);
-
-    return painel;
-  }
-
   private JPanel conteuddo() {
     inicializarComponents();
     JPanel flow = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -152,7 +135,7 @@ public class Financas extends JPanel {
     botaoComTi.setEnabled(false);
     conteudoPrincipal.add(botaoComTi,g1);
     conteudoPrincipal.add(painCard,g2);
-    conteudoPrincipal.add(criargrafico(),g2 );
+    // conteudoPrincipal.add(criargrafico(),g2 );
 
 
 

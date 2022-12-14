@@ -5,11 +5,6 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
-import Disciplina.ListarDisciplina;
-import Estudantes.ListarEstudante;
-import Financas.Financas;
-import Formacao.ListarFormacao;
-import Tarefas.CadastrarTarefa;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -170,5 +165,6 @@ public class TelaPaginaInicia extends JPanel {
 
         return painConteudo;
     }
+
 
 }

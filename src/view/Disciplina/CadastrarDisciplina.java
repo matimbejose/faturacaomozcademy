@@ -2,9 +2,7 @@ package Disciplina;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
-import controller.EstudanteController;
-
+import controller.ItemController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,13 +36,10 @@ public class CadastrarDisciplina extends JFrame {
           float preco = Float.parseFloat(precoDisciplina.getText());
           boolean resposta;
 
-          EstudanteController ic = new EstudanteController();
+          ItemController ic = new ItemController();
 
-          resposta = true;
 
-          System.out.println(nome);
-          System.out.print(preco);
-      
+          resposta = ic.ValidarItem(nome, "disciplina",preco);
           if (resposta) {
             dispose();
             JOptionPane.showMessageDialog(null, "Realizado Com Sucesso!", "Confirm", JOptionPane.OK_OPTION);

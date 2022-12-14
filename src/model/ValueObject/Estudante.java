@@ -7,7 +7,7 @@ import java.util.Date;
 public class Estudante {
     private int idEstudante;
     private String nome;
-    private String nome_do_item;
+    private String nomeItem;
     private String contacto;
     private String status;
     private float valorPago;
@@ -16,26 +16,32 @@ public class Estudante {
     private String data_inscriao;
     
 
-public String getData_inscriao() {
-        return data_inscriao;
-    }
-
-
-    public void setData_inscriao(String data_inscriao) {
-        this.data_inscriao = data_inscriao;
-    }
 
 
 public Estudante(String nome,String contacto,float valorPago,String nivel,String hora, String nomeItem) {
-    //this.idEstudante = idEstudante;
     this.nome = nome;
     this.contacto = contacto;
     this.valorPago = valorPago;
     this.nivel = nivel;
     this.hora = hora;
-    this.nome_do_item = nomeItem;
+    this.nomeItem = nomeItem;
     this.data_inscriao = getDateTime();
 }
+
+public Estudante() {
+}
+
+
+
+public String getData_inscriao() {
+    return data_inscriao;
+}
+
+
+public void setData_inscriao(String data_inscriao) {
+    this.data_inscriao = data_inscriao;
+}
+
 
 
 public  String getDateTime() {
@@ -53,17 +59,10 @@ public  String getDateTime() {
         this.hora = hora;
     }
 
-    public String getNome_Item() {
-        return nome_do_item;
+
+    public void setnomeItem(String nomeItem) {
+        this.nomeItem = nomeItem;
     }
-
-    public void setNome_Item(String nome_Item) {
-        this.nome_do_item = nome_Item;
-    }
-
-    
-
-    private String nomeItem;
 
 
     public float getValorPago() {
@@ -90,13 +89,6 @@ public  String getDateTime() {
         this.nomeItem = nomeItem;
     }
 
-    public Estudante() {}
-
-    public Estudante(String nome, String contacto, String status) {
-        this.nome = nome;
-        this.contacto = contacto;
-        this.status = status;
-    }
 
 
     public int getIdEstudante() {

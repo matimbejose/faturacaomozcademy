@@ -1,25 +1,25 @@
 package Estudantes;
-
-import model.DataAccessObject.EstudanteDAO;
-import model.ValueObject.Estudante_Da_Tabela;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import controller.EstudanteController;
+import model.ValueObject.Estudante;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class ListarEstudante extends JPanel   {
 
     private JButton  bCadastrarEst;
-    private JButton bGerarRelatorio,  bRefresh;
+    private JButton bGerarRelatorio;
     private JTable tblEstudantes;
     private JScrollPane scrEstudantes;
     private ImageIcon  imgAddEst;
     JButton getbRefresh;
 
-    private void listarValore(){
+    private void listarValore() {
 
     }
 
@@ -29,42 +29,29 @@ public class ListarEstudante extends JPanel   {
     public ListarEstudante(){
         setLayout(new BorderLayout());
         add(BorderLayout.CENTER , conteuddo());
+
+        EstudanteController ec = new EstudanteController();
+        DefaultTableModel modelo = (DefaultTableModel) tblEstudantes.getModel();
+
+        for(Estudante est : ec.read()){
+            modelo.addRow(new Object[]{
+                est.getIdEstudante(),
+                est.getNome(),
+                est.getNivel(),
+                est.getNomeItem(),
+                est.getStatus(),
+                est.getData_inscriao()
+            });
+
+        }
+
         setVisible(true);
-        listarValore();
+        
     }
 
 
 
     public void inicializarComponents() {
-        bRefresh = new JButton("Refresh");
-        bRefresh.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try{
-                    EstudanteDAO objEstudanteDAO = new EstudanteDAO();
-                    DefaultTableModel model = (DefaultTableModel) tblEstudantes.getModel();
-                    model.setNumRows(0);
-
-                    ArrayList<Estudante_Da_Tabela> listaEst = objEstudanteDAO.listarEstudante();
-                    for(int num =0; num<listaEst.size();num++){
-                        model.addRow(new Object[]{
-                                listaEst.get(num).getIdEst(),
-                                listaEst.get(num).getNome(),
-                                listaEst.get(num).getNivel(),
-                                listaEst.get(num).getTipo(),
-                                listaEst.get(num).getStatus(),
-                                listaEst.get(num).getDtInscricao()
-                        });
-
-                    }
-
-                }catch (Exception ex){
-                    JOptionPane.showMessageDialog(null, "Listar Estudantes View"+ex);
-                }
-            }
-        });
-
-
         imgAddEst = new ImageIcon("Img/addpeople.png");
         bCadastrarEst= new JButton("Cadastrar Estudante",imgAddEst);
         bCadastrarEst.setBackground(Color.WHITE);
@@ -72,23 +59,20 @@ public class ListarEstudante extends JPanel   {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         CadastrarEstudante cd = new CadastrarEstudante();
-                        System.out.print("ele entrou ");
                     }
                 });
 
 
         tblEstudantes = new JTable();
-        Object [] columns ={"idEstudante","nome","nivel","tipo","status","dt_inscricao"};
+        Object [] columns ={"idEstudante","nome","nivel","nome_Item","status","data_inscricao"};
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);
         tblEstudantes.setModel(model);
         tblEstudantes.setAutoCreateRowSorter(true);
 
+
         scrEstudantes = new JScrollPane(tblEstudantes);
-        bGerarRelatorio = new JButton("Gerar Relatorio");bGerarRelatorio.setForeground(Color.WHITE);bGerarRelatorio.setBackground(Color.BLACK);
-
-        bRefresh = new JButton("Show From DB");
-
+        bGerarRelatorio = new JButton("Gerar Relatorio", new ImageIcon("Img/impressao.png"));bGerarRelatorio.setBackground(Color.WHITE);
     }
 
 
@@ -117,7 +101,6 @@ public class ListarEstudante extends JPanel   {
 
     private JPanel painButInferior() {
         JPanel painButInferior = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        painButInferior.add(bRefresh);
         painButInferior.add(bGerarRelatorio);
 
 
@@ -131,30 +114,6 @@ public class ListarEstudante extends JPanel   {
             painSup.add(bCadastrarEst);
         return painSup;
     }
-
-
-//    public void lista() {
-//        EstudanteDAO objEstudanteDao = new EstudanteDAO();
-//        try {
-//            while (objEstudanteDao.listarEstudantes().next()) {
-//                String idEstudante = String.valueOf(objEstudanteDao.listarEstudantes().getInt("idEstudante"));
-//                String nome = objEstudanteDao.listarEstudantes().getString("nome");
-//                String nivel = objEstudanteDao.listarEstudantes().getString("nivel");
-//                String tipo = objEstudanteDao.listarEstudantes().getString("tipo");
-//                String status = objEstudanteDao.listarEstudantes().getString("status");
-//                String dt_inscricao = String.valueOf(objEstudanteDao.listarEstudantes().getDate("dt_inscricao"));
-//
-//
-//                String tbData[] = {idEstudante, nome, nivel, tipo, status, dt_inscricao};
-//                DefaultTableModel tblModel = (DefaultTableModel) tblEstudantes.getModel();
-//
-//                tblModel.addRow(tbData);
-//            }
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "ListarEstudantes" + ex);
-//
-//        }
-//}
 
 
 }

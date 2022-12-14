@@ -1,9 +1,7 @@
 package Estudantes;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import controller.EstudanteController;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +14,7 @@ public class CadastrarEstudante extends JFrame {
 
     public CadastrarEstudante() {
         setLayout(new BorderLayout());
+        setIconImage((new ImageIcon("Img/logo.png")).getImage());
         add(BorderLayout.CENTER, conteuddo());
         pack();
         setVisible(true);
@@ -178,9 +177,10 @@ public class CadastrarEstudante extends JFrame {
 
                resposta = new EstudanteController().cadastrarEstudante(txtNome.getText(), valorPg, txtContato.getText(), txtNivel.getText(), txtItem1.getText(), txtItem2.getText(), txtItem3.getText(), txtHora.getText());
 
+
                if(resposta) {
-                JOptionPane.showMessageDialog(null, "cadastrado com sucesso");
                 dispose();
+                JOptionPane.showMessageDialog(null, "cadastrado com sucesso");
                } else {
                 JOptionPane.showMessageDialog(null, "erro no cadastro");
                }
@@ -190,11 +190,5 @@ public class CadastrarEstudante extends JFrame {
         });
 
         return flow;
-    }
-
- 
-
-    public static void main(String[] args) {
-        new CadastrarEstudante();
     }
 }

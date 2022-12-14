@@ -1,16 +1,13 @@
 package Login;
 
-import model.DataAccessObject.UsuarioDAO;
-import model.ValueObject.Usuario;
+
 import javax.swing.*;
-
 import app.Main;
-
+import controller.UsuarioController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 
 public class TelaLogin extends JFrame implements ActionListener {
     JLabel labNome, labSenha;
@@ -64,33 +61,23 @@ public class TelaLogin extends JFrame implements ActionListener {
     }
 
     private void bLogar(){
-       try{
            String nomeTela, senhaTela;
            nomeTela = txtNome.getText();
+           boolean resposta;
 
             senhaTela = String.valueOf(pwSenha.getPassword());
 
-           Usuario objUsuValueObj = new Usuario();
-           objUsuValueObj.setNome(nomeTela);
-           objUsuValueObj.setSenha(senhaTela);
+            UsuarioController uc = new UsuarioController();
+            resposta = uc.ValidarUsuario(nomeTela, senhaTela);
 
-           UsuarioDAO objUsuarioDao = new UsuarioDAO();
-           ResultSet rsusuarioDao = objUsuarioDao.autenticarusuario(objUsuValueObj);
-
-           if(rsusuarioDao.next()){
-               //chgamar tela que eu quero abrir
+           if(resposta){
                Main pi = new Main();
                dispose();
                JOptionPane.showMessageDialog(null , "Logado com sucesso !");
 
-           }else {
-
-               //enciar msg dizendo incorrecto
+           }else{
                JOptionPane.showMessageDialog(this, "Nome ou Senha Invalida.","", JOptionPane.ERROR_MESSAGE);
            }
-       }catch (SQLException ex){
-           JOptionPane.showMessageDialog(this,"Tela Login"+ex);
-       }
     }
 
     public TelaLogin(){
@@ -105,7 +92,6 @@ public class TelaLogin extends JFrame implements ActionListener {
     private JPanel painelPrincipal() {
         JPanel painelPrincipal = new JPanel();
         painelPrincipal.setLayout(new GridLayout(1,2));
-        //painelPrincipal.setLayout(new BoxLayout(painelPrincipal,BoxLayout.X_AXIS));
         painelPrincipal.setBounds(150, 150, 700,400);
         painelPrincipal.add(painelEsquerdo());
         painelPrincipal.add(painelDireito());

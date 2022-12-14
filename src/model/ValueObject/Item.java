@@ -8,11 +8,10 @@ public class Item {
 
     public Item(){}
 
-    public Item( String nome, float preco, String tipo) {
+    public Item(String nome, float preco, String tipo) {
         this.nome = nome;
         this.preco = preco;
         this.tipo = tipo;
-
     }
 
     public String getTipo() {

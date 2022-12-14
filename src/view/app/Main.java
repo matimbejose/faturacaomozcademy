@@ -158,9 +158,4 @@ public class Main extends JFrame {
         return contemMenu;
     }
 
-
-    public static void main(String[] args) {
-        new Main();
-    }
-
 }
